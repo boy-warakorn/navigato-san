@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import './rooms_screen.dart';
+import 'package:mobile_project/widgets/annoucements.dart';
 
 class MainScreen extends StatelessWidget {
-  void _selectScreen(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(RoomScreen.routeName);
-  }
-
   // Widget buildButton(String text, IconData icon, BuildContext context) {
   //   return Container(
   //     width: 150,
@@ -74,31 +70,62 @@ class MainScreen extends StatelessWidget {
                     hintText: 'input a room name here',
                   ),
                 ),
-              )
+              ),
             ],
           ),
-          // SizedBox(
-          //   height: 50,
-          // ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //   children: <Widget>[
-          //     buildButton('Rooms', Icons.home, context),
-          //     buildButton('To-do', Icons.today, context),
-          //   ],
-          // ),
-          // SizedBox(
-          //   height: 50,
-          // ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //   children: <Widget>[
-          //     buildButton('Map', Icons.room, context),
-          //     buildButton('Contact', Icons.phone, context),
-          //   ],
-          // )
+          SizedBox(
+            height: 10,
+          ),
+          Annoucements(),
         ],
       ),
     );
   }
 }
+
+// for 4 button
+// SizedBox(
+//   height: 50,
+// ),
+// Row(
+//   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//   children: <Widget>[
+//     buildButton('Rooms', Icons.home, context),
+//     buildButton('To-do', Icons.today, context),
+//   ],
+// ),
+// SizedBox(
+//   height: 50,
+// ),
+// Row(
+//   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//   children: <Widget>[
+//     buildButton('Map', Icons.room, context),
+//     buildButton('Contact', Icons.phone, context),
+//   ],
+// )
+// Card(
+//           margin: EdgeInsets.only(top: 15),
+//           color: Colors.transparent,
+//           elevation: 10,
+//           child: Container(
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(10),
+//               gradient: LinearGradient(
+//                 colors: [
+//                   Colors.orange.withOpacity(0.5),
+//                   Colors.orange,
+//                 ],
+//                 begin: Alignment.topLeft,
+//                 end: Alignment.bottomRight,
+//               ),
+//             ),
+//             padding: EdgeInsets.all(10),
+//             width: 350,
+//             height: 200,
+//             child: Annoucements(
+//               title: 'asdasd',
+//               description: 'asdasdsd',
+//             ),
+//           ),
+//         ),

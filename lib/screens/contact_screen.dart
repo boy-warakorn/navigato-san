@@ -24,7 +24,6 @@ class ContactScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -35,7 +34,10 @@ class ContactScreen extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           gradient: LinearGradient(
-            colors: [Colors.orange, Colors.orange.withOpacity(0.7)],
+            colors: [
+              Colors.orange,
+              Colors.orange.withOpacity(0.7),
+            ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -53,7 +55,7 @@ class ContactScreen extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
-          buildContactBlock(': facebook', 'assets/images/facebook.png'),
+          buildContactBlock(': SIT KMUTT', 'assets/images/facebook.png'),
           SizedBox(
             height: 15,
           ),
@@ -61,11 +63,11 @@ class ContactScreen extends StatelessWidget {
           SizedBox(
             height: 15,
           ),
-          buildContactBlock(': www.kmutt.ac.th', 'assets/images/KMUTT.png'),
+          buildContactBlock(': sit.kmutt.ac.th', 'assets/images/KMUTT.png'),
           SizedBox(
             height: 15,
           ),
-          buildContactBlock(': 02 470 8000', 'assets/images/contact.png'),
+          buildContactBlock(': 02-470-8000', 'assets/images/contact.png'),
           SizedBox(
             height: 17,
           ),

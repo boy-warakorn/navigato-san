@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_project/screens/tabs_screen.dart';
 
+import './screens/room_detail_screen.dart';
+import './screens/map_full_screen.dart';
+import './screens/tabs_screen.dart';
 import './screens/rooms_screen.dart';
-import './screens/main_screen.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -17,12 +19,13 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: 'Kanit',
           primaryColor: Colors.orangeAccent,
-         
         ),
         initialRoute: '/',
         routes: {
           '/': (ctx) => TabsScreen(),
+          MapsFullScreen.routeName: (ctx) => MapsFullScreen(),
           RoomScreen.routeName: (ctx) => RoomScreen(),
+          RoomDetailScreen.routeName: (ctx) => RoomDetailScreen(),
         });
   }
 }

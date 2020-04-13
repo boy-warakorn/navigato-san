@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_project/screens/contact_screen.dart';
-import 'package:mobile_project/screens/map_screen.dart';
-import 'package:mobile_project/screens/todo_screen.dart';
 
+import './contact_screen.dart';
+import './map_screen.dart';
+import './todo_screen.dart';
 import './main_screen.dart';
 import './rooms_screen.dart';
 
@@ -13,7 +13,7 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen> {
   List<Map<String, Object>> _pages;
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
 
   void initState() {
     _pages = [
@@ -52,24 +52,19 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       backgroundColor: Colors.orange[100],
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.orange,
         centerTitle: true,
         title: Container(
           width: 150,
           padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.orange, Colors.orange.withOpacity(0.7)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-            borderRadius: BorderRadius.circular(15),
+            color: Colors.white.withOpacity(0.95),
+            borderRadius: BorderRadius.circular(5),
           ),
           child: Center(
             child: Text(
               _pages[_selectedIndex]['title'],
-              style: TextStyle(color: Colors.white,fontSize: 25),
-              
+              style: TextStyle(color: Colors.orange, fontSize: 25),
             ),
           ),
         ),
@@ -77,24 +72,25 @@ class _TabsScreenState extends State<TabsScreen> {
       body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.orange,
         unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.white,
+        selectedItemColor: Colors.deepOrange.withOpacity(0.8),
         currentIndex: _selectedIndex,
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             backgroundColor: Colors.orange,
             icon: Icon(
               Icons.pageview,
-              size: 35,
+              size: 30,
             ),
             title: Text('Rooms'),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.orange,
             icon: Icon(
-              Icons.save,
-              size: 35,
+              Icons.local_activity,
+              size: 30,
             ),
             title: Text('To-do'),
           ),
@@ -102,7 +98,7 @@ class _TabsScreenState extends State<TabsScreen> {
             backgroundColor: Colors.orange,
             icon: Icon(
               Icons.room,
-              size: 40,
+              size: 35,
             ),
             title: Text('Main'),
           ),
@@ -110,15 +106,15 @@ class _TabsScreenState extends State<TabsScreen> {
             backgroundColor: Colors.orange,
             icon: Icon(
               Icons.map,
-              size: 35,
+              size: 30,
             ),
             title: Text('Maps'),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.orange,
             icon: Icon(
-              Icons.phone,
-              size: 35,
+              Icons.contact_phone,
+              size: 30,
             ),
             title: Text('Contact'),
           ),
