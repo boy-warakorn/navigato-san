@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import '../models/room.dart';
 import '../data/dummy_data.dart';
 
-class RoomDetailScreen extends StatefulWidget {
-  static const routeName = '/roomDetail';
+class RoomDetailScreen2 extends StatefulWidget {
+  static const routeName = '/roomDetail2';
   final Function todoHandler;
   final Function isTodo;
-  RoomDetailScreen(this.todoHandler, this.isTodo);
+  RoomDetailScreen2(this.todoHandler, this.isTodo);
 
   @override
-  _RoomDetailScreenState createState() => _RoomDetailScreenState();
+  _RoomDetailScreen2State createState() => _RoomDetailScreen2State();
 }
 
-class _RoomDetailScreenState extends State<RoomDetailScreen> {
+class _RoomDetailScreen2State extends State<RoomDetailScreen2> {
   @override
   Widget build(BuildContext context) {
     final roomId = ModalRoute.of(context).settings.arguments as String;
@@ -210,21 +210,6 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
               ],
             ),
           ],
-        ),
-      ),
-      floatingActionButton: Container(
-        width: MediaQuery.of(context).size.width * 0.94,
-        child: FloatingActionButton.extended(
-          icon: widget.isTodo(roomId)
-              ? Icon(Icons.favorite)
-              : Icon(Icons.favorite_border),
-          label: widget.isTodo(roomId)
-              ? Text('Unadd to To-do List')
-              : Text('Add to To-do List'),
-          onPressed: () {
-            widget.todoHandler(roomId);
-          },
-          backgroundColor: Colors.deepOrange,
         ),
       ),
     );

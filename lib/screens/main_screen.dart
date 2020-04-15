@@ -60,7 +60,7 @@ class MainScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                width: 300,
+                width: 350,
                 child: TextField(
                   decoration: InputDecoration(
                     prefixIcon: Icon(
@@ -75,6 +75,34 @@ class MainScreen extends StatelessWidget {
           ),
           SizedBox(
             height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(left: 45),
+                child: Text(
+                  'Annoucement : ',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(right: 30),
+                child: FlatButton(
+                  onPressed: () {},
+                  child: Text(
+                    'See All...',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.blueGrey,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           Annoucements(),
         ],

@@ -13,7 +13,7 @@ class _MapTestState extends State<MapTest> {
       mapType: MapType.normal,
       initialCameraPosition: CameraPosition(
         target: LatLng(13.651932, 100.493780),
-        zoom: 35,
+        zoom: 20,
       ),
       markers: {
         Marker(

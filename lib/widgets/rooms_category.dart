@@ -8,13 +8,11 @@ class RoomsCategory extends StatelessWidget {
   final String id;
   final String description;
   final Category category;
+  final String imgPath;
+  final String location;
 
-  RoomsCategory(
-    this.title,
-    this.id,
-    this.description,
-    this.category,
-  );
+  RoomsCategory(this.title, this.id, this.description, this.category,
+      this.imgPath, this.location);
 
   void goRoomDetail(BuildContext context) {
     Navigator.of(context).pushNamed(
@@ -82,7 +80,7 @@ class RoomsCategory extends StatelessWidget {
                 topRight: Radius.circular(15),
               ),
               child: Image.asset(
-                'assets/images/dummy2.jpg',
+                imgPath,
                 height: 150,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -98,6 +96,7 @@ class RoomsCategory extends StatelessWidget {
                     'Title: ${title}',
                     style: TextStyle(
                       fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

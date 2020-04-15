@@ -18,46 +18,63 @@ class MapScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Container(
-                  width: 170,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.search,
-                      ),
-                      labelText: 'Searching',
-                      hintText: 'input a room name here',
-                    ),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.orangeAccent,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: FlatButton(
-                    onPressed: () => goMapsFull(context),
-                    child: Text(
-                      'Facilites',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                Flexible(
+                  flex: 3,
+                  child: Container(
+                    margin: EdgeInsets.only(left: 10),
+                    width: 170,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.search,
+                        ),
+                        labelText: 'Searching',
+                        hintText: 'input a room name here',
                       ),
                     ),
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(10),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: FlatButton(
+                      onPressed: () => goMapsFull(context),
+                      child: FittedBox(
+                        fit: BoxFit.cover,
+                        child: Text(
+                          'Facilites',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                  child: FlatButton(
-                    onPressed: () => goMapsFull(context),
-                    child: Text(
-                      'Full screen',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    margin: EdgeInsets.only(left:5,right: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: FlatButton(
+                      onPressed: () => goMapsFull(context),
+                      child: FittedBox(
+                        fit: BoxFit.cover,
+                        child: Text(
+                          'Fullscreen',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                   ),

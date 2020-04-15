@@ -5,7 +5,7 @@ class ContactScreen extends StatelessWidget {
     return Center(
       child: Container(
         height: 50,
-        width: 200,
+        width: 250,
         padding: EdgeInsets.all(5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -72,7 +72,7 @@ class ContactScreen extends StatelessWidget {
             height: 17,
           ),
           Container(
-            height: 200,
+            height: 220,
             child: Image.asset('assets/images/test.png'),
           )
         ],

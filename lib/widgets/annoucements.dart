@@ -12,11 +12,17 @@ class Annoucements extends StatelessWidget {
       autoPlayInterval: Duration(seconds: 5),
       pauseAutoPlayOnTouch: Duration(seconds: 10),
       enlargeCenterPage: true,
-      height: 220.0,
+      height: 170.0,
       items: annouceData.map((i) {
         return Builder(
           builder: (BuildContext context) {
             return Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  25,
+                ),
+              ),
+              elevation: 10,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -31,11 +37,11 @@ class Annoucements extends StatelessWidget {
                         FittedBox(
                           fit: BoxFit.cover,
                           child: Text(
-                            'Annoucement : ${i.title}',
+                            '${i.title} <',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
-                              color: Colors.brown,
+                              color: Colors.black,
                             ),
                           ),
                         ),
@@ -44,13 +50,27 @@ class Annoucements extends StatelessWidget {
                         ),
                         Icon(
                           Icons.announcement,
-                          color: Colors.brown,
+                          color: Colors.blueGrey,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        FittedBox(
+                          fit: BoxFit.cover,
+                          child: Text(
+                            '>',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
                       ],
                     ),
                     Divider(
                       thickness: 2,
-                      color: Colors.brown,
+                      color: Colors.black,
                     ),
                     Expanded(
                       child: ListView(
@@ -58,7 +78,7 @@ class Annoucements extends StatelessWidget {
                           Text(
                             'Details : ${i.description}',
                             style: TextStyle(
-                              color: Colors.brown,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

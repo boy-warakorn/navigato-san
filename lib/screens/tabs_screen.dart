@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../data/dummy_data.dart';
+import '../widgets/main_drawer.dart';
+import '../models/room.dart';
 import './contact_screen.dart';
 import './map_screen.dart';
 import './todo_screen.dart';
@@ -7,6 +10,8 @@ import './main_screen.dart';
 import './rooms_screen.dart';
 
 class TabsScreen extends StatefulWidget {
+  List<Room> todoRoom = [];
+  TabsScreen(this.todoRoom);
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
@@ -22,8 +27,8 @@ class _TabsScreenState extends State<TabsScreen> {
         'title': 'Rooms',
       },
       {
-        'page': TodoScreen(),
-        'title': 'Todos',
+        'page': TodoScreen(widget.todoRoom),
+        'title': 'To-Dos',
       },
       {
         'page': MainScreen(),
@@ -58,17 +63,20 @@ class _TabsScreenState extends State<TabsScreen> {
           width: 150,
           padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.95),
             borderRadius: BorderRadius.circular(5),
           ),
           child: Center(
             child: Text(
               _pages[_selectedIndex]['title'],
-              style: TextStyle(color: Colors.orange, fontSize: 25),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+              ),
             ),
           ),
         ),
       ),
+      drawer: MainDrawer(),
       body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
@@ -105,7 +113,7 @@ class _TabsScreenState extends State<TabsScreen> {
           BottomNavigationBarItem(
             backgroundColor: Colors.orange,
             icon: Icon(
-              Icons.map,
+              Icons.explore,
               size: 30,
             ),
             title: Text('Maps'),

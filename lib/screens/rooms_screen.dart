@@ -18,9 +18,12 @@ class RoomScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                width: 300,
+                margin: EdgeInsets.only(top: 10),
+                width: 400,
                 child: TextField(
                   decoration: InputDecoration(
+                    fillColor: Colors.white24,
+                    filled: true,
                     prefixIcon: Icon(
                       Icons.search,
                     ),
@@ -39,6 +42,8 @@ class RoomScreen extends StatelessWidget {
                 roomList[index].id,
                 roomList[index].description,
                 roomList[index].category,
+                roomList[index].imgPath,
+                roomList[index].location,
               ),
               itemCount: roomList.length,
             ),
