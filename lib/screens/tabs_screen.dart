@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../data/dummy_data.dart';
 import '../widgets/main_drawer.dart';
 import '../models/room.dart';
 import './contact_screen.dart';
-import './map_screen.dart';
+import './map/map_screen.dart';
 import './todo_screen.dart';
 import './main_screen.dart';
-import './rooms_screen.dart';
+import './room/rooms_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   List<Room> todoRoom = [];
@@ -57,7 +59,6 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       backgroundColor: Colors.orange[100],
       appBar: AppBar(
-        backgroundColor: Colors.orange,
         centerTitle: true,
         title: Container(
           width: 150,
@@ -82,25 +83,32 @@ class _TabsScreenState extends State<TabsScreen> {
         onTap: _selectPage,
         backgroundColor: Colors.orange,
         unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.deepOrange.withOpacity(0.8),
+        selectedItemColor: Colors.black,
+        elevation: 3,
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             backgroundColor: Colors.orange,
-            icon: Icon(
-              Icons.pageview,
+            icon: FaIcon(
+              FontAwesomeIcons.doorOpen,
               size: 30,
             ),
-            title: Text('Rooms'),
+            title: Text(
+              'Rooms',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.orange,
-            icon: Icon(
-              Icons.local_activity,
+            icon: FaIcon(
+              FontAwesomeIcons.clipboardList,
               size: 30,
             ),
-            title: Text('To-do'),
+            title: Text(
+              'To-do',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.orange,
@@ -108,7 +116,10 @@ class _TabsScreenState extends State<TabsScreen> {
               Icons.room,
               size: 35,
             ),
-            title: Text('Main'),
+            title: Text(
+              'Main',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.orange,
@@ -116,15 +127,21 @@ class _TabsScreenState extends State<TabsScreen> {
               Icons.explore,
               size: 30,
             ),
-            title: Text('Maps'),
+            title: Text(
+              'Maps',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.orange,
-            icon: Icon(
-              Icons.contact_phone,
+            icon: FaIcon(
+              FontAwesomeIcons.phoneSquareAlt,
               size: 30,
             ),
-            title: Text('Contact'),
+            title: Text(
+              'Contact',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
         ],
       ),

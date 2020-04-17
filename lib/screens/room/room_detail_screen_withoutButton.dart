@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/room.dart';
-import '../data/dummy_data.dart';
+import '../../models/room.dart';
+import '../../data/dummy_data.dart';
 
 class RoomDetailScreen2 extends StatefulWidget {
   static const routeName = '/roomDetail2';

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_project/widgets/annoucements.dart';
+import '../screens/annoucement/annoucement_list_screen.dart';
+import '../widgets/annoucements.dart';
+import '../data/dummy_data.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../models/annoucement.dart';
 
 class MainScreen extends StatelessWidget {
   // Widget buildButton(String text, IconData icon, BuildContext context) {
@@ -39,6 +43,9 @@ class MainScreen extends StatelessWidget {
   //     ),
   //   );
   // }
+  void goAnnoucementList(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(AnnoucementList.routeName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +56,7 @@ class MainScreen extends StatelessWidget {
           Center(
             child: Container(
               margin: EdgeInsets.only(top: 30),
-              height: 200,
+              height: 190,
               child: Image.asset(
                 'assets/images/marker.png',
                 fit: BoxFit.cover,
@@ -60,29 +67,53 @@ class MainScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                width: 350,
-                child: TextField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.search,
+                margin: EdgeInsets.only(
+                  top: 10,
+                ),
+                child: Card(
+                  elevation: 5,
+                  child: Container(
+                    width: 350,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        5,
+                      ),
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.orange,
+                          Colors.orange.withOpacity(0.6),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
                     ),
-                    labelText: 'Find room',
-                    hintText: 'input a room name here',
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.search,
+                          size: 40,
+                          color: Colors.black,
+                        ),
+                        labelText: 'Find room ...',
+                        labelStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        hintText: 'input a room name here',
+                      ),
+                    ),
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(left: 45),
+                margin: EdgeInsets.only(left:45),
                 child: Text(
-                  'Annoucement : ',
+                  'Annoucement :',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -92,12 +123,12 @@ class MainScreen extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(right: 30),
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () => goAnnoucementList(context),
                   child: Text(
                     'See All...',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.blueGrey,
+                      color: Colors.black,
                     ),
                   ),
                 ),

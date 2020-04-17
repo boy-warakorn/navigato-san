@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../data/dummy_data.dart';
 import '../models/annoucement.dart';
 
@@ -12,17 +13,17 @@ class Annoucements extends StatelessWidget {
       autoPlayInterval: Duration(seconds: 5),
       pauseAutoPlayOnTouch: Duration(seconds: 10),
       enlargeCenterPage: true,
-      height: 170.0,
+      height: 175.0,
       items: annouceData.map((i) {
         return Builder(
           builder: (BuildContext context) {
             return Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
-                  25,
+                  10,
                 ),
               ),
-              elevation: 10,
+              elevation: 5,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -37,7 +38,7 @@ class Annoucements extends StatelessWidget {
                         FittedBox(
                           fit: BoxFit.cover,
                           child: Text(
-                            '${i.title} <',
+                            '${i.title}',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -48,23 +49,8 @@ class Annoucements extends StatelessWidget {
                         SizedBox(
                           width: 15,
                         ),
-                        Icon(
-                          Icons.announcement,
-                          color: Colors.blueGrey,
-                        ),
                         SizedBox(
                           width: 15,
-                        ),
-                        FittedBox(
-                          fit: BoxFit.cover,
-                          child: Text(
-                            '>',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
                         ),
                       ],
                     ),
@@ -76,7 +62,7 @@ class Annoucements extends StatelessWidget {
                       child: ListView(
                         children: <Widget>[
                           Text(
-                            'Details : ${i.description}',
+                            'Details : ${i.description.substring(1,100)} MORE....',
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,

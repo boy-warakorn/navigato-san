@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ContactScreen extends StatelessWidget {
-  Widget buildContactBlock(String text, String imgPath) {
+  Widget buildContactBlock(String text, FaIcon icon) {
     return Center(
       child: Container(
         height: 50,
@@ -10,10 +11,8 @@ class ContactScreen extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Image.asset(
-              imgPath,
-              fit: BoxFit.cover,
-            ),
+            SizedBox(width: 5),
+            icon,
             Flexible(
               fit: FlexFit.tight,
               child: Container(
@@ -55,19 +54,21 @@ class ContactScreen extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
-          buildContactBlock(': SIT KMUTT', 'assets/images/facebook.png'),
+          buildContactBlock(': SIT KMUTT', FaIcon(FontAwesomeIcons.facebook)),
           SizedBox(
             height: 15,
           ),
-          buildContactBlock(': @regiskmutt', 'assets/images/line.png'),
+          buildContactBlock(
+              ': @regiskmutt', FaIcon(FontAwesomeIcons.instagram)),
           SizedBox(
             height: 15,
           ),
-          buildContactBlock(': sit.kmutt.ac.th', 'assets/images/KMUTT.png'),
+          buildContactBlock(
+              ': sit.kmutt.ac.th', FaIcon(FontAwesomeIcons.globeAsia)),
           SizedBox(
             height: 15,
           ),
-          buildContactBlock(': 02-470-8000', 'assets/images/contact.png'),
+          buildContactBlock(': 02-470-8000', FaIcon(FontAwesomeIcons.phone)),
           SizedBox(
             height: 17,
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './map_full_screen.dart';
-import '../widgets/map.dart';
+import '../../widgets/map.dart';
 
 class MapScreen extends StatelessWidget {
   void goMapsFull(BuildContext ctx) {

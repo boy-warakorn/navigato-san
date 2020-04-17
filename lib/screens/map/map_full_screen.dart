@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/map.dart';
+import '../../widgets/map.dart';
 
 class MapsFullScreen extends StatelessWidget {
   static const routeName = '/fullScreen';

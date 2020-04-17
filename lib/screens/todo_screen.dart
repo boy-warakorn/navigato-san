@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/room.dart';
 import '../widgets/todos_item.dart';
 import '../data/dummy_data.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TodoScreen extends StatefulWidget {
   final List<Room> todoRoom;
@@ -40,61 +41,129 @@ class _TodoScreenState extends State<TodoScreen> {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Center(
-                child: Text(
-                  'No To-do List now',
-                  style: TextStyle(
-                    fontSize: 20,
+          Center(
+            child: Container(
+              margin: EdgeInsets.only(),
+              height: 200,
+              child: Image.asset(
+                'assets/images/test.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 10,
+            ),
+            padding: EdgeInsets.all(
+              7,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.orange[200],
+              borderRadius: BorderRadius.circular(
+                15,
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Center(
+                  child: Text(
+                    'No To-Do List right now!',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: 5,
-                ),
-                child: Icon(Icons.block),
-              ),
-            ],
-          ),
-        ],
-      );
-    } else {
-      return SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height * 0.8,
-          child: GridView.builder(
-            padding: EdgeInsets.all(20),
-            itemCount: widget.todoRoom.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              crossAxisCount: 2,
-            ),
-            itemBuilder: (ctx, index) => Stack(
-              children: <Widget>[
-                TodoList(
-                  widget.todoRoom[index].id,
-                  widget.todoRoom[index].title,
-                  widget.todoRoom[index].imgPath,
-                ),
-                Positioned(
-                  right: 2,
-                  top: 3,
-                  child: IconButton(
-                    onPressed: () => _toggleFavorite(widget.todoRoom[index].id),
-                    color: Colors.black,
-                    icon: Icon(
-                      Icons.delete_forever,
-                      size: 40,
-                    ),
+                Container(
+                  margin: EdgeInsets.only(
+                    left: 5,
+                  ),
+                  child: FaIcon(
+                    FontAwesomeIcons.solidHandPaper,
+                    size: 30,
                   ),
                 ),
               ],
             ),
           ),
+        ],
+      );
+    } else {
+      return SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(left: 22, top: 13),
+                  child: Text(
+                    'To-Dos List now',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                    left: 10,
+                    top: 17,
+                  ),
+                  child: Icon(
+                    Icons.today,
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: 10,
+              ),
+              child: Divider(
+                color: Colors.black,
+                thickness: 2,
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.7,
+              child: GridView.builder(
+                padding: EdgeInsets.all(20),
+                itemCount: widget.todoRoom.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 15,
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (ctx, index) => Stack(
+                  children: <Widget>[
+                    TodoList(
+                      widget.todoRoom[index].id,
+                      widget.todoRoom[index].title,
+                      widget.todoRoom[index].imgPath,
+                    ),
+                    Positioned(
+                      right: 2,
+                      top: 3,
+                      child: IconButton(
+                        onPressed: () =>
+                            _toggleFavorite(widget.todoRoom[index].id),
+                        color: Colors.black,
+                        icon: Icon(
+                          Icons.delete_forever,
+                          size: 40,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       );
     }

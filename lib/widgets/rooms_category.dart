@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/room.dart';
-import '../screens/room_detail_screen.dart';
+import '../screens/room/room_detail_screen.dart';
 
 class RoomsCategory extends StatelessWidget {
   final String title;

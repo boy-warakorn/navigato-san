@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/room_detail_screen_withoutButton.dart';
+import '../screens/room/room_detail_screen_withoutButton.dart';
 
 class TodoList extends StatefulWidget {
   final String id;
@@ -37,7 +37,7 @@ class _TodoListState extends State<TodoList> {
             15,
           ),
         ),
-        color: Colors.orange,
+        color: Colors.orange[300],
         elevation: 5,
         child: Column(
           children: <Widget>[
@@ -65,7 +65,7 @@ class _TodoListState extends State<TodoList> {
                       child: Text(
                         'Title : ${widget.title}',
                         style: TextStyle(
-                          color: Colors.white70 ,
+                          color: Colors.black,
                         ),
                       ),
                     ),

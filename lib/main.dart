@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import './data/dummy_data.dart';
 
+import './data/dummy_data.dart';
+import './screens/annoucement/annoucement_list_screen.dart';
 import './models/room.dart';
-import './screens/room_detail_screen.dart';
-import './screens/map_full_screen.dart';
+import './screens/room/room_detail_screen.dart';
+import './screens/map/map_full_screen.dart';
 import './screens/tabs_screen.dart';
-import './screens/rooms_screen.dart';
-import './screens/room_detail_screen_withoutButton.dart';
+import './screens/room/rooms_screen.dart';
+import './screens/room/room_detail_screen_withoutButton.dart';
+import './models/annoucement.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,6 +22,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Room> _todoRoom = [];
+  final List<Annoucement> annouceData = DUMMY_ANNOUCEMENT;
 
   void _toggleFavorite(String roomId) {
     final existingIndex = _todoRoom.indexWhere((room) => room.id == roomId);
@@ -57,6 +60,7 @@ class _MyAppState extends State<MyApp> {
               RoomDetailScreen(_toggleFavorite, _isRoomTodo),
           RoomDetailScreen2.routeName: (ctx) =>
               RoomDetailScreen2(_toggleFavorite, _isRoomTodo),
+          AnnoucementList.routeName: (ctx) => AnnoucementList(annouceData),
         });
   }
 }
