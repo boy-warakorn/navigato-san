@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../models/room.dart';
 import '../../data/dummy_data.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RoomDetailScreen2 extends StatefulWidget {
   static const routeName = '/roomDetail2';
@@ -87,7 +88,7 @@ class _RoomDetailScreen2State extends State<RoomDetailScreen2> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(left: 10),
                   child: Text(
                     'Rooms :',
                     style: TextStyle(
@@ -101,22 +102,43 @@ class _RoomDetailScreen2State extends State<RoomDetailScreen2> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  child: Text(
-                    '${title}',
-                    style: TextStyle(
-                      fontSize: 25,
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                      left: 10,
+                    ),
+                    child: Text(
+                      '${title}',
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(right: 20),
-                  child: Text(
-                    '( Category : ${category_text} )',
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.black87,
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                      right: 20,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.only(
+                            right: 5,
+                          ),
+                          child: FaIcon(FontAwesomeIcons.tag),
+                        ),
+                        Text(
+                          '${category_text}',
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -138,7 +160,7 @@ class _RoomDetailScreen2State extends State<RoomDetailScreen2> {
               children: <Widget>[
                 Container(
                   height: 60,
-                  margin: EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(left: 10),
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,7 +171,7 @@ class _RoomDetailScreen2State extends State<RoomDetailScreen2> {
                             Icons.insert_comment,
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 5),
+                            margin: const EdgeInsets.only(left: 5),
                             child: Text(
                               'Detail : ',
                               style: TextStyle(
@@ -161,7 +183,7 @@ class _RoomDetailScreen2State extends State<RoomDetailScreen2> {
                       ),
                       Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(right: 5),
+                          margin: const EdgeInsets.only(right: 5),
                           child: ListView(
                             children: <Widget>[
                               Text(
@@ -183,7 +205,7 @@ class _RoomDetailScreen2State extends State<RoomDetailScreen2> {
               children: <Widget>[
                 Container(
                   height: 100,
-                  margin: EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(left: 10),
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

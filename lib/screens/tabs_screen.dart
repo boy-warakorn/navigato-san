@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import '../data/dummy_data.dart';
 import '../widgets/main_drawer.dart';
 import '../models/room.dart';
-import './contact_screen.dart';
+import './layout_map/layout_map_screen.dart';
 import './map/map_screen.dart';
 import './todo_screen.dart';
 import './main_screen.dart';
@@ -41,8 +41,8 @@ class _TabsScreenState extends State<TabsScreen> {
         'title': 'Map',
       },
       {
-        'page': ContactScreen(),
-        'title': 'Contact',
+        'page': LayoutMapScreen(),
+        'title': 'Layout',
       },
     ];
     super.initState();
@@ -62,7 +62,7 @@ class _TabsScreenState extends State<TabsScreen> {
         centerTitle: true,
         title: Container(
           width: 150,
-          padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
+          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
           ),
@@ -123,8 +123,8 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.orange,
-            icon: Icon(
-              Icons.explore,
+            icon: FaIcon(
+              FontAwesomeIcons.mapMarkedAlt,
               size: 30,
             ),
             title: Text(
@@ -135,11 +135,11 @@ class _TabsScreenState extends State<TabsScreen> {
           BottomNavigationBarItem(
             backgroundColor: Colors.orange,
             icon: FaIcon(
-              FontAwesomeIcons.phoneSquareAlt,
+              FontAwesomeIcons.mapSigns,
               size: 30,
             ),
             title: Text(
-              'Contact',
+              'Layout Map',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),

@@ -57,6 +57,7 @@ class _RoomScreenState extends State<RoomScreen> {
                   'Rooms List Now',
                   style: TextStyle(
                     fontSize: 25,
+                    fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                 ),
@@ -68,6 +69,7 @@ class _RoomScreenState extends State<RoomScreen> {
                 ),
                 child: Icon(
                   Icons.label_important,
+                  color: Colors.black,
                 ),
               ),
             ],
@@ -77,7 +79,7 @@ class _RoomScreenState extends State<RoomScreen> {
               horizontal: 10,
             ),
             child: Divider(
-              color: Colors.black,
+              color: Colors.blueGrey,
               thickness: 2,
             ),
           ),
@@ -85,7 +87,7 @@ class _RoomScreenState extends State<RoomScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   top: 10,
                   bottom: 10,
                 ),

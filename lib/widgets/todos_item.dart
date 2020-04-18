@@ -42,7 +42,7 @@ class _TodoListState extends State<TodoList> {
         child: Column(
           children: <Widget>[
             ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(15),
                 topRight: Radius.circular(15),
               ),
@@ -53,13 +53,13 @@ class _TodoListState extends State<TodoList> {
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.only(top: 5, left: 5, right: 5),
+                    margin: const EdgeInsets.only(top: 5, left: 5, right: 5),
                     child: FittedBox(
                       fit: BoxFit.cover,
                       child: Text(

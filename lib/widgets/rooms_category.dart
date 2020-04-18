@@ -75,7 +75,7 @@ class RoomsCategory extends StatelessWidget {
         child: Column(
           children: <Widget>[
             ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(15),
                 topRight: Radius.circular(15),
               ),
@@ -91,7 +91,7 @@ class RoomsCategory extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.only(top: 10, bottom: 20),
+                  padding: const EdgeInsets.only(top: 10, bottom: 20),
                   child: Text(
                     'Title: ${title}',
                     style: TextStyle(
@@ -101,7 +101,7 @@ class RoomsCategory extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 10, bottom: 20),
+                  padding: const EdgeInsets.only(top: 10, bottom: 20),
                   child: Row(
                     children: <Widget>[
                       Icon(iconOfRoom),

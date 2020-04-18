@@ -205,9 +205,18 @@ class FunkyOverlayState extends State<FunkyOverlay>
           scale: scaleAnimation,
           child: Container(
             decoration: ShapeDecoration(
-                color: Colors.orange,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0))),
+              gradient: LinearGradient(
+                colors: [
+                  Colors.orange,
+                  Colors.deepOrangeAccent[200],
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(50.0),
               child: Column(

@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../models/annoucement.dart';
 
 class MainScreen extends StatelessWidget {
+  static const routeName = '/main';
   // Widget buildButton(String text, IconData icon, BuildContext context) {
   //   return Container(
   //     width: 150,
@@ -55,7 +56,7 @@ class MainScreen extends StatelessWidget {
         children: <Widget>[
           Center(
             child: Container(
-              margin: EdgeInsets.only(top: 30),
+              margin: const EdgeInsets.only(top: 30),
               height: 190,
               child: Image.asset(
                 'assets/images/marker.png',

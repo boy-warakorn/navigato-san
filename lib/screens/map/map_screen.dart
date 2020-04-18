@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import './map_full_screen.dart';
 import '../../widgets/map.dart';
@@ -21,8 +22,8 @@ class MapScreen extends StatelessWidget {
                 Flexible(
                   flex: 3,
                   child: Container(
-                    margin: EdgeInsets.only(left: 10),
-                    width: 170,
+                    margin: const EdgeInsets.only(left: 10),
+                    width: 190,
                     child: TextField(
                       decoration: InputDecoration(
                         prefixIcon: Icon(
@@ -41,25 +42,25 @@ class MapScreen extends StatelessWidget {
                       color: Colors.orange,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: FlatButton(
-                      onPressed: () => goMapsFull(context),
-                      child: FittedBox(
-                        fit: BoxFit.cover,
-                        child: Text(
-                          'Facilites',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
+                    // child: FlatButton(
+                    //   onPressed: () => goMapsFull(context),
+                    //   child: FittedBox(
+                    //     fit: BoxFit.cover,
+                    //     child: Text(
+                    //       'Facilites',
+                    //       style: TextStyle(
+                    //         color: Colors.white,
+                    //         fontWeight: FontWeight.bold,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ),
                 ),
                 Expanded(
                   flex: 2,
                   child: Container(
-                    margin: EdgeInsets.only(left:5,right: 10),
+                    margin: const EdgeInsets.only(right: 10),
                     decoration: BoxDecoration(
                       color: Colors.orange,
                       borderRadius: BorderRadius.circular(10),
@@ -68,12 +69,22 @@ class MapScreen extends StatelessWidget {
                       onPressed: () => goMapsFull(context),
                       child: FittedBox(
                         fit: BoxFit.cover,
-                        child: Text(
-                          'Fullscreen',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        child: Row(
+                          children: <Widget>[
+                            FaIcon(
+                              FontAwesomeIcons.searchPlus,
+                              size: 25,
+                              color:Colors.white,
+                            ),
+                            SizedBox(width: 4),
+                            Text(
+                              'Fullscreen',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -92,7 +103,7 @@ class MapScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border.all(width: 1),
                   ),
-                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
                   height: 440,
                   child: MapTest(),
                 ),
@@ -100,7 +111,7 @@ class MapScreen extends StatelessWidget {
                   bottom: 20,
                   left: 20,
                   child: Container(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       color: Colors.orange.withOpacity(0.5),
