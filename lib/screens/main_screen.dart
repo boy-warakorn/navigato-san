@@ -94,12 +94,12 @@ class MainScreen extends StatelessWidget {
                           size: 40,
                           color: Colors.black,
                         ),
-                        labelText: 'Find room ...',
+                        labelText: 'Find room by category ...',
                         labelStyle: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
-                        hintText: 'input a room name here',
+                        hintText: 'input a category here',
                       ),
                     ),
                   ),
@@ -107,35 +107,35 @@ class MainScreen extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(left:45),
-                child: Text(
-                  'Annoucement :',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(right: 30),
-                child: FlatButton(
-                  onPressed: () => goAnnoucementList(context),
-                  child: Text(
-                    'See All...',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Annoucements(),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: <Widget>[
+          //     Container(
+          //       margin: EdgeInsets.only(left:45),
+          //       child: Text(
+          //         'Annoucement :',
+          //         style: TextStyle(
+          //           fontSize: 20,
+          //           fontWeight: FontWeight.bold,
+          //         ),
+          //       ),
+          //     ),
+          //     Container(
+          //       margin: EdgeInsets.only(right: 30),
+          //       child: FlatButton(
+          //         onPressed: () => goAnnoucementList(context),
+          //         child: Text(
+          //           'See All...',
+          //           style: TextStyle(
+          //             fontSize: 18,
+          //             color: Colors.black,
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          // Annoucements(),
         ],
       ),
     );

@@ -51,8 +51,22 @@ class ContactScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(80),
+              bottomRight: Radius.circular(80),
+            ),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.35,
+              width: double.infinity,
+              child: Image.asset(
+                'assets/images/kmuttTem.jpg',
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
           SizedBox(
-            height: 50,
+            height: 30,
           ),
           buildContactBlock(': SIT KMUTT', FaIcon(FontAwesomeIcons.facebook)),
           SizedBox(
@@ -72,10 +86,10 @@ class ContactScreen extends StatelessWidget {
           SizedBox(
             height: 17,
           ),
-          Container(
-            height: 220,
-            child: Image.asset('assets/images/test.png'),
-          )
+          // Container(
+          //   height: 220,
+          //   child: Image.asset('assets/images/test.png'),
+          // )
         ],
       ),
     );

@@ -6,7 +6,7 @@ import '../models/room.dart';
 const DUMMY_ROOM = const [
   Room(
     id: '1',
-    title: 'Room #1',
+    title: 'room first',
     description: 'This is a first room',
     category: Category.Education,
     imgPath: 'assets/images/dummy1.jpg',
@@ -14,7 +14,7 @@ const DUMMY_ROOM = const [
   ),
   Room(
     id: '2',
-    title: 'Room #2',
+    title: 'room second',
     description: 'This is a second room',
     category: Category.Show,
     imgPath: 'assets/images/dummy3.jpg',
@@ -22,7 +22,7 @@ const DUMMY_ROOM = const [
   ),
   Room(
     id: '3',
-    title: 'Room #3',
+    title: 'room third',
     description: 'This is a third room',
     category: Category.Game,
     imgPath: 'assets/images/dummy2.jpg',
@@ -30,7 +30,7 @@ const DUMMY_ROOM = const [
   ),
   Room(
     id: '4',
-    title: 'Room #4',
+    title: 'room fourth',
     description: 'This is a fourth room',
     category: Category.Game,
     imgPath: 'assets/images/dummy3.jpg',
@@ -38,7 +38,7 @@ const DUMMY_ROOM = const [
   ),
   Room(
     id: '5',
-    title: 'Room #5',
+    title: 'room fifth',
     description: 'This is a fifth room',
     category: Category.Show,
     imgPath: 'assets/images/dummy1.jpg',
@@ -46,7 +46,7 @@ const DUMMY_ROOM = const [
   ),
   Room(
     id: '6',
-    title: 'Room #6',
+    title: 'room sixth',
     description: 'This is a sixth room',
     category: Category.Education,
     imgPath: 'assets/images/dummy2.jpg',
