@@ -38,7 +38,6 @@ class _TodoListState extends State<TodoList> {
           ),
         ),
         color: Colors.orange[300],
-        elevation: 5,
         child: Column(
           children: <Widget>[
             ClipRRect(
@@ -55,21 +54,30 @@ class _TodoListState extends State<TodoList> {
             ),
             const SizedBox(height: 5),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 5, left: 5, right: 5),
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: Text(
-                        'Title : ${widget.title}',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
+                Column(
+                  children: <Widget>[
+                    Container(
+                      margin: const EdgeInsets.only(top: 5, left: 5, right: 5),
+                      child: widget.title.length < 11
+                          ? Text(
+                              'Name : ${widget.title}',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                              ),
+                            )
+                          : Text(
+                              'Name : ${widget.title.substring(0, 10)}..',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                              ),
+                            ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),

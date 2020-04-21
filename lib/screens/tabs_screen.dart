@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mobile_project/screens/contact_screen.dart';
 
 import '../data/dummy_data.dart';
 import '../widgets/main_drawer.dart';
@@ -26,7 +27,7 @@ class _TabsScreenState extends State<TabsScreen> {
     _pages = [
       {
         'page': RoomScreen(),
-        'title': 'Rooms',
+        'title': 'Zones',
       },
       {
         'page': TodoScreen(widget.todoRoom),
@@ -34,15 +35,15 @@ class _TabsScreenState extends State<TabsScreen> {
       },
       {
         'page': MainScreen(),
-        'title': 'Main',
-      },
-      {
-        'page': MapScreen(),
-        'title': 'Map',
+        'title': 'Navigato-san',
       },
       {
         'page': LayoutMapScreen(),
         'title': 'Layout',
+      },
+      {
+        'page': ContactScreen(),
+        'title': 'Contact us',
       },
     ];
     super.initState();
@@ -56,95 +57,189 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.orange[100],
-      appBar: AppBar(
-        centerTitle: true,
-        title: Container(
-          width: 150,
-          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-          ),
-          child: Center(
-            child: Text(
-              _pages[_selectedIndex]['title'],
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-              ),
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      return Scaffold(
+        backgroundColor: Colors.orange[100],
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            _pages[_selectedIndex]['title'],
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
             ),
           ),
         ),
-      ),
-      drawer: MainDrawer(),
-      body: _pages[_selectedIndex]['page'],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: _selectPage,
-        backgroundColor: Colors.orange,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.black,
-        elevation: 3,
-        currentIndex: _selectedIndex,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            backgroundColor: Colors.orange,
-            icon: FaIcon(
-              FontAwesomeIcons.doorOpen,
-              size: 30,
+        body: _pages[_selectedIndex]['page'],
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: _selectPage,
+          backgroundColor: Colors.orange,
+          unselectedItemColor: Colors.white,
+          selectedItemColor: Colors.black,
+          elevation: 3,
+          currentIndex: _selectedIndex,
+          type: BottomNavigationBarType.fixed,
+          items: [
+            BottomNavigationBarItem(
+              backgroundColor: Colors.orange,
+              icon: FaIcon(
+                FontAwesomeIcons.doorOpen,
+                size: 20,
+              ),
+              title: Text(
+                'Rooms',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
-            title: Text(
-              'Rooms',
-              style: TextStyle(fontWeight: FontWeight.bold),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.orange,
+              icon: FaIcon(
+                FontAwesomeIcons.clipboardList,
+                size: 20,
+              ),
+              title: Text(
+                'To-do',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.orange,
+              icon: Icon(
+                Icons.room,
+                size: 25,
+              ),
+              title: Text(
+                'Main',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            // BottomNavigationBarItem(
+            //   backgroundColor: Colors.orange,
+            //   icon: FaIcon(
+            //     FontAwesomeIcons.mapMarkedAlt,
+            //     size: 20,
+            //   ),
+            //   title: Text(
+            //     'Where LX',
+            //     style: TextStyle(fontWeight: FontWeight.bold),
+            //   ),
+            // ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.orange,
+              icon: FaIcon(
+                FontAwesomeIcons.mapSigns,
+                size: 20,
+              ),
+              title: Text(
+                'LX Map',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.orange,
+              icon: FaIcon(
+                FontAwesomeIcons.phone,
+                size: 20,
+              ),
+              title: Text(
+                'Contact',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+        floatingActionButton: _selectedIndex == 3
+            ? FloatingActionButton(
+                backgroundColor: Colors.orange,
+                onPressed: () {},
+                child: Icon(
+                  Icons.search,
+                  size: 40,
+                ),
+              )
+            : null,
+      );
+    } else {
+      return Scaffold(
+        backgroundColor: Colors.orange[100],
+        appBar: AppBar(
+          title: Text(
+            _pages[_selectedIndex]['title'],
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
             ),
           ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.orange,
-            icon: FaIcon(
-              FontAwesomeIcons.clipboardList,
-              size: 30,
+        ),
+        drawer: MainDrawer(),
+        body: _pages[_selectedIndex]['page'],
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: _selectPage,
+          backgroundColor: Colors.orange,
+          unselectedItemColor: Colors.white,
+          selectedItemColor: Colors.black,
+          elevation: 3,
+          currentIndex: _selectedIndex,
+          type: BottomNavigationBarType.fixed,
+          items: [
+            BottomNavigationBarItem(
+              backgroundColor: Colors.orange,
+              icon: FaIcon(
+                FontAwesomeIcons.doorOpen,
+                size: 20,
+              ),
+              title: Text(
+                'Rooms',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
-            title: Text(
-              'To-do',
-              style: TextStyle(fontWeight: FontWeight.bold),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.orange,
+              icon: FaIcon(
+                FontAwesomeIcons.clipboardList,
+                size: 20,
+              ),
+              title: Text(
+                'To-do',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.orange,
-            icon: Icon(
-              Icons.room,
-              size: 35,
+            BottomNavigationBarItem(
+              backgroundColor: Colors.orange,
+              icon: Icon(
+                Icons.room,
+                size: 25,
+              ),
+              title: Text(
+                'Main',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
-            title: Text(
-              'Main',
-              style: TextStyle(fontWeight: FontWeight.bold),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.orange,
+              icon: FaIcon(
+                FontAwesomeIcons.mapMarkedAlt,
+                size: 20,
+              ),
+              title: Text(
+                'Where LX',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.orange,
-            icon: FaIcon(
-              FontAwesomeIcons.mapMarkedAlt,
-              size: 30,
+            BottomNavigationBarItem(
+              backgroundColor: Colors.orange,
+              icon: FaIcon(
+                FontAwesomeIcons.mapSigns,
+                size: 20,
+              ),
+              title: Text(
+                'LX Map',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
-            title: Text(
-              'Maps',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.orange,
-            icon: FaIcon(
-              FontAwesomeIcons.mapSigns,
-              size: 30,
-            ),
-            title: Text(
-              'Layout Map',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    }
   }
 }

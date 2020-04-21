@@ -90,7 +90,7 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
                 Container(
                   margin: const EdgeInsets.only(left: 10),
                   child: Text(
-                    'Rooms :',
+                    'Name :',
                     style: TextStyle(
                       color: Colors.black54,
                       fontWeight: FontWeight.bold,
@@ -111,7 +111,7 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
                     child: Text(
                       '${title}',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 20,
                       ),
                     ),
                   ),
@@ -126,13 +126,15 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Container(
-                          margin: const EdgeInsets.only(right:5,),
+                          margin: const EdgeInsets.only(
+                            right: 5,
+                          ),
                           child: FaIcon(FontAwesomeIcons.tag),
                         ),
                         Text(
                           '${category_text}',
                           style: TextStyle(
-                            fontSize: 25,
+                            fontSize: 20,
                             color: Colors.black87,
                           ),
                         ),
@@ -157,40 +159,28 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
             Row(
               children: <Widget>[
                 Container(
-                  height: 60,
                   margin: EdgeInsets.only(left: 10),
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: MediaQuery.of(context).size.width * 0.9,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.insert_comment,
+                      Container(
+                        margin: const EdgeInsets.only(left: 5),
+                        child: Text(
+                          'Detail : ',
+                          style: TextStyle(
+                            fontSize: 20,
                           ),
-                          Container(
-                            margin: const EdgeInsets.only(left: 5),
-                            child: Text(
-                              'Detail : ',
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.only(right: 5),
-                          child: ListView(
-                            children: <Widget>[
-                              Text(
-                                '${description}',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ],
+                      Container(
+                        margin: const EdgeInsets.only(
+                          left: 5,
+                        ),
+                        child: Text(
+                          '${description}',
+                          style: TextStyle(
+                            fontSize: 15,
                           ),
                         ),
                       ),
@@ -204,22 +194,30 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
                 Container(
                   height: 100,
                   margin: const EdgeInsets.only(left: 10),
-                  width: MediaQuery.of(context).size.width * 0.9,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Row(
                         children: <Widget>[
-                          Icon(Icons.room),
                           Container(
+                            width: MediaQuery.of(context).size.width * 0.85,
                             margin: EdgeInsets.only(
                               left: 5,
                             ),
-                            child: Text(
-                              'Location : ${location}',
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'Location :',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                Text(
+                                  '${location}',
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                              ],
                             ),
                           ),
                         ],

@@ -21,7 +21,6 @@ class AnnoucementList extends StatelessWidget {
           ),
         ),
         color: Colors.orange[200],
-        elevation: 9,
         margin: EdgeInsets.only(
           left: 30,
           right: 30,
@@ -58,9 +57,8 @@ class AnnoucementList extends StatelessWidget {
                     ],
                   ),
                 ),
-                Divider(
-                  color: Colors.black,
-                  thickness: 1,
+                SizedBox(
+                  height: 5,
                 ),
                 Container(
                   width: double.infinity,

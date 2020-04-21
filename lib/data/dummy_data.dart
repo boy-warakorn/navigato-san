@@ -14,7 +14,7 @@ const DUMMY_ROOM = const [
   ),
   Room(
     id: '2',
-    title: 'room second',
+    title: 'room secondsecondsecondsecond',
     description: 'This is a second room',
     category: Category.Show,
     imgPath: 'assets/images/dummy3.jpg',
@@ -22,10 +22,10 @@ const DUMMY_ROOM = const [
   ),
   Room(
     id: '3',
-    title: 'room third',
+    title: 'ORO',
     description: 'This is a third room',
     category: Category.Game,
-    imgPath: 'assets/images/dummy2.jpg',
+    imgPath: 'assets/images/oro.jpg',
     location: 'This is a place for room 3',
   ),
   Room(

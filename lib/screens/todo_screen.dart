@@ -58,12 +58,6 @@ class _TodoScreenState extends State<TodoScreen> {
             padding: EdgeInsets.all(
               7,
             ),
-            decoration: BoxDecoration(
-              color: Colors.orange[200],
-              borderRadius: BorderRadius.circular(
-                15,
-              ),
-            ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -74,7 +68,6 @@ class _TodoScreenState extends State<TodoScreen> {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.underline,
                     ),
                   ),
                 ),
@@ -132,11 +125,11 @@ class _TodoScreenState extends State<TodoScreen> {
             Container(
               height: MediaQuery.of(context).size.height * 0.7,
               child: GridView.builder(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(10),
                 itemCount: widget.todoRoom.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 15,
+                  crossAxisSpacing: 7,
+                  mainAxisSpacing: 7,
                   crossAxisCount: 2,
                 ),
                 itemBuilder: (ctx, index) => Stack(

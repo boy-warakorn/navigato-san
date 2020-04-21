@@ -81,11 +81,17 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  double itemSize = 0;
+  double opacity = 0;
+
+  Duration animationDuration = Duration(seconds: 1);
+
   @override
   void initState() {
     super.initState();
+
     Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         PageTransition(
           child: TabsScreen(widget.todoRoom),
@@ -97,14 +103,40 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Timer(Duration(milliseconds: 1), () {
+      setState(() {
+        opacity = 1;
+      });
+    });
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/splashscreen.jpg'),
+      body: Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/splashscreen.jpg'),
+              ),
+            ),
+            child: null,
           ),
-        ),
-        child: null,
+          Positioned(
+            top: 200,
+            left: 130,
+            child: AnimatedOpacity(
+              duration: animationDuration,
+              opacity: opacity,
+              child: AnimatedContainer(
+                duration: animationDuration,
+                width: MediaQuery.of(context).size.width * 0.3,
+                height: MediaQuery.of(context).size.height * 0.3,
+                child: Image.asset(
+                  'assets/images/marker.png',
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

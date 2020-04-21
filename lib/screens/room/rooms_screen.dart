@@ -54,34 +54,15 @@ class _RoomScreenState extends State<RoomScreen> {
               Container(
                 margin: const EdgeInsets.only(left: 22, top: 13),
                 child: Text(
-                  'Rooms List Now',
+                  'Zones in Exhibition',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: 10,
-                  top: 17,
-                ),
-                child: Icon(
-                  Icons.label_important,
-                  color: Colors.black,
-                ),
-              ),
             ],
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: 10,
-            ),
-            child: Divider(
-              color: Colors.blueGrey,
-              thickness: 2,
-            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -101,6 +82,9 @@ class _RoomScreenState extends State<RoomScreen> {
                       size: 40,
                     ),
                     labelText: 'Searching',
+                    labelStyle: TextStyle(
+                      fontSize: 15,
+                    ),
                     hintText: 'input a room name here',
                   ),
                 ),
@@ -109,7 +93,7 @@ class _RoomScreenState extends State<RoomScreen> {
           ),
           textTest == ''
               ? Container(
-                  height: MediaQuery.of(context).size.height * 0.57,
+                  height: MediaQuery.of(context).size.height * 0.6,
                   child: ListView.builder(
                     itemBuilder: (ctx, index) => RoomsCategory(
                       roomList[index].title,
@@ -123,7 +107,7 @@ class _RoomScreenState extends State<RoomScreen> {
                   ),
                 )
               : Container(
-                  height: MediaQuery.of(context).size.height * 0.57,
+                  height: MediaQuery.of(context).size.height * 0.6,
                   child: ListView.builder(
                     itemBuilder: (ctx, index) => RoomsCategory(
                       roomSearch[index].title,

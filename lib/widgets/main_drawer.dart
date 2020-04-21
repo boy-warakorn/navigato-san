@@ -11,7 +11,7 @@ class MainDrawer extends StatelessWidget {
       title: Text(
         title,
         style: TextStyle(
-          fontSize: 24,
+          fontSize: 20,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -34,7 +34,7 @@ class MainDrawer extends StatelessWidget {
               'Navigato-san',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 30,
+                fontSize: 25,
                 color: Colors.white,
               ),
             ),

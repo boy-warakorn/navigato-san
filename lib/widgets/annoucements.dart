@@ -54,15 +54,14 @@ class Annoucements extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Divider(
-                      thickness: 2,
-                      color: Colors.black,
+                    SizedBox(
+                      height: 5,
                     ),
                     Expanded(
                       child: ListView(
                         children: <Widget>[
                           Text(
-                            'Details : ${i.description.substring(1,100)} MORE....',
+                            'Details : ${i.description.substring(1, 100)} MORE....',
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,

@@ -67,11 +67,12 @@ class RoomsCategory extends StatelessWidget {
       onTap: () => goRoomDetail(context),
       child: Card(
         color: Colors.orange[300],
-        margin: EdgeInsets.all(30),
+        margin: EdgeInsets.all(
+          15,
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        elevation: 10,
         child: Column(
           children: <Widget>[
             ClipRRect(
@@ -92,13 +93,21 @@ class RoomsCategory extends StatelessWidget {
               children: <Widget>[
                 Container(
                   padding: const EdgeInsets.only(top: 10, bottom: 20),
-                  child: Text(
-                    'Title: ${title}',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  child: title.length < 10
+                      ? Text(
+                          'Name : ${title}',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      : Text(
+                          'Name : ${title.substring(0, 9)}...',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                 ),
                 Container(
                   padding: const EdgeInsets.only(top: 10, bottom: 20),
