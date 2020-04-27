@@ -1,6 +1,6 @@
 # mobile_project
 
-A new Flutter project.
+LX Navigation mobile application
 
 ## Getting Started
 
