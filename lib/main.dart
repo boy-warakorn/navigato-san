@@ -1,113 +1,143 @@
 import 'package:flutter/material.dart';
+import './screens/main_screen.dart';
+
+import 'dart:async';
+import './screens/contact_screen.dart';
+import './data/dummy_data.dart';
+import './screens/annoucement/annoucement_list_screen.dart';
+import './models/room.dart';
+import './screens/room/room_detail_screen.dart';
+import './screens/map/map_full_screen.dart';
+import './screens/tabs_screen.dart';
+import './screens/room/rooms_screen.dart';
+import './screens/room/room_detail_screen_withoutButton.dart';
+import './models/annoucement.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<Room> _todoRoom = [];
+  final List<Annoucement> annouceData = DUMMY_ANNOUCEMENT;
+
+  void _toggleFavorite(String roomId) {
+    final existingIndex = _todoRoom.indexWhere((room) => room.id == roomId);
+    if (existingIndex >= 0) {
+      setState(() {
+        _todoRoom.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        _todoRoom.add(
+          DUMMY_ROOM.firstWhere((room) => room.id == roomId),
+        );
+      });
+    }
+  }
+
+  bool _isRoomTodo(String id) {
+    return _todoRoom.any((room) => room.id == id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        fontFamily: 'Kanit',
+        primaryColor: Colors.orangeAccent,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: '/',
+      routes: {
+        '/': (ctx) => SplashScreen(_todoRoom),
+        '/main': (ctx) => TabsScreen(_todoRoom),
+        MapsFullScreen.routeName: (ctx) => MapsFullScreen(),
+        RoomScreen.routeName: (ctx) => RoomScreen(),
+        RoomDetailScreen.routeName: (ctx) =>
+            RoomDetailScreen(_toggleFavorite, _isRoomTodo),
+        RoomDetailScreen2.routeName: (ctx) =>
+            RoomDetailScreen2(_toggleFavorite, _isRoomTodo),
+        AnnoucementList.routeName: (ctx) => AnnoucementList(annouceData),
+        ContactScreen.routeName: (ctx) => ContactScreen(),
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  List<Room> todoRoom;
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
+  SplashScreen(this.todoRoom);
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _SplashScreenState extends State<SplashScreen> {
+  double itemSize = 0;
+  double opacity = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+  Duration animationDuration = Duration(seconds: 1);
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+        context,
+        PageTransition(
+          child: TabsScreen(widget.todoRoom),
+          type: null,
+        ),
+      );
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    Timer(Duration(milliseconds: 1), () {
+      setState(() {
+        opacity = 1;
+      });
+    });
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+      body: Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/splashscreen.jpg'),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            child: null,
+          ),
+          Positioned(
+            top: 200,
+            left: 130,
+            child: AnimatedOpacity(
+              duration: animationDuration,
+              opacity: opacity,
+              child: AnimatedContainer(
+                duration: animationDuration,
+                width: MediaQuery.of(context).size.width * 0.3,
+                height: MediaQuery.of(context).size.height * 0.3,
+                child: Image.asset(
+                  'assets/images/marker.png',
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
