@@ -33,7 +33,7 @@ class ContactScreen extends StatelessWidget {
                         fontSize: 19,
                         color: text == ': sit.kmutt.ac.th'
                             ? Colors.blue
-                            : Colors.white,
+                            : Colors.black,
                         decoration: text == ': sit.kmutt.ac.th'
                             ? TextDecoration.underline
                             : TextDecoration.none,
@@ -116,14 +116,14 @@ class ContactScreen extends StatelessWidget {
                       FaIcon(
                         FontAwesomeIcons.phoneVolume,
                         size: 25,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       Text(
                         'Call us',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
                       ),
                     ],

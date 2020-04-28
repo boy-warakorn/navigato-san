@@ -20,8 +20,121 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+  Widget _buildButton(String text) {
+    return Container(
+      margin: EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 10,
+      ),
+      width: 150,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          8,
+        ),
+        gradient: LinearGradient(
+          colors: [
+            Colors.orange.withOpacity(1),
+            Colors.orange.withOpacity(0.7)
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: FlatButton(
+        onPressed: () {},
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            text.length < 16
+                ? Text(
+                    text,
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.black,
+                    ),
+                  )
+                : Text(
+                    text.substring(
+                          0,
+                          15,
+                        ) +
+                        '...',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.black,
+                    ),
+                  ),
+          ],
+        ),
+      ),
+    );
+  }
+
   List<Map<String, Object>> _pages;
   int _selectedIndex = 2;
+  void _showModalSheet() {
+    showModalBottomSheet(
+        context: context,
+        builder: (builder) {
+          return GestureDetector(
+            onTap: () {},
+            behavior: HitTestBehavior.opaque,
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.6,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(
+                      top: 10,
+                    ),
+                    child: Text(
+                      'Zones list in Layout Map',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      _buildButton('Exhibition Zone'),
+                      _buildButton('Escape Room'),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      _buildButton('ORO'),
+                      _buildButton('Pop up Exhibition'),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      _buildButton('LX Building studies'),
+                      _buildButton('MC. show room'),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      _buildButton('Entrepeneur innovation'),
+                      _buildButton('Research show'),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      _buildButton('Vending Machine'),
+                      _buildButton('Toilet'),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
 
   void initState() {
     _pages = [
@@ -65,7 +178,7 @@ class _TabsScreenState extends State<TabsScreen> {
           title: Text(
             _pages[_selectedIndex]['title'],
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontSize: 25,
             ),
           ),
@@ -73,7 +186,7 @@ class _TabsScreenState extends State<TabsScreen> {
         body: _pages[_selectedIndex]['page'],
         bottomNavigationBar: BottomNavigationBar(
           onTap: _selectPage,
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.orangeAccent,
           unselectedItemColor: Colors.white,
           selectedItemColor: Colors.black,
           elevation: 3,
@@ -87,7 +200,7 @@ class _TabsScreenState extends State<TabsScreen> {
                 size: 20,
               ),
               title: Text(
-                'Rooms',
+                'Zones',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
@@ -148,10 +261,10 @@ class _TabsScreenState extends State<TabsScreen> {
             ),
           ],
         ),
-        floatingActionButton: _selectedIndex == 3
+        floatingActionButton: _selectedIndex == 5
             ? FloatingActionButton(
                 backgroundColor: Colors.orange,
-                onPressed: () {},
+                onPressed: () => _showModalSheet(),
                 child: Icon(
                   Icons.search,
                   size: 40,

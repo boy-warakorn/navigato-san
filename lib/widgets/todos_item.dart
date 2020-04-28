@@ -66,14 +66,14 @@ class _TodoListState extends State<TodoList> {
                               'Name : ${widget.title}',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 20,
+                                fontSize: 14,
                               ),
                             )
                           : Text(
                               'Name : ${widget.title.substring(0, 10)}..',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 20,
+                                fontSize: 14,
                               ),
                             ),
                     ),
