@@ -45,9 +45,9 @@ class _LayoutMapScreenState extends State<LayoutMapScreen> {
               ),
             ),
             margin: EdgeInsets.only(
-              top: 5,
+              top: 10,
             ),
-            height: 465,
+            height: 460,
             width: MediaQuery.of(context).size.width,
             child: PhotoView(
               imageProvider: AssetImage(

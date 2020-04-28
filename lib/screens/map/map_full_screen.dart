@@ -14,7 +14,12 @@ class _MapsFullScreenState extends State<MapsFullScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Maps'),
+        title: Text(
+          'Navigation Map',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
       body: MapTest(),
     );

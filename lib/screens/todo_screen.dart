@@ -97,8 +97,9 @@ class _TodoScreenState extends State<TodoScreen> {
                   child: Text(
                     'To-Dos List now',
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 22,
                       color: Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -107,20 +108,14 @@ class _TodoScreenState extends State<TodoScreen> {
                     left: 10,
                     top: 17,
                   ),
-                  child: Icon(
-                    Icons.today,
+                  child: FaIcon(
+                    FontAwesomeIcons.listAlt,
                   ),
                 ),
               ],
             ),
-            Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
-              child: Divider(
-                color: Colors.black,
-                thickness: 2,
-              ),
+            SizedBox(
+              height: 10,
             ),
             Container(
               height: MediaQuery.of(context).size.height * 0.7,

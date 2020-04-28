@@ -1,6 +1,6 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_mapbox_navigation/flutter_mapbox_navigation.dart';
 import '../screens/map/map_full_screen.dart';
 import '../screens/annoucement/annoucement_list_screen.dart';
 import '../widgets/annoucements.dart';
@@ -8,45 +8,51 @@ import '../data/dummy_data.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../models/annoucement.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   static const routeName = '/main';
-  // Widget buildButton(String text, IconData icon, BuildContext context) {
-  //   return Container(
-  //     width: 150,
-  //     height: 50,
-  //     child: InkWell(
-  //       borderRadius: BorderRadius.circular(15),
-  //       onTap: () => _selectScreen(context),
-  //       splashColor: Colors.orange,
-  //       child: Container(
-  //         child: Row(
-  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //           children: <Widget>[
-  //             Icon(
-  //               icon,
-  //               color: Colors.white,
-  //               size: 40,
-  //             ),
-  //             Text(
-  //               text,
-  //               style: TextStyle(
-  //                 color: Colors.white,
-  //                 fontSize: 20,
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //         decoration: BoxDecoration(
-  //             gradient: LinearGradient(
-  //               colors: [Colors.orange.withOpacity(0.7), Colors.orange],
-  //               begin: Alignment.topLeft,
-  //               end: Alignment.bottomRight,
-  //             ),
-  //             borderRadius: BorderRadius.circular(15)),
-  //       ),
-  //     ),
-  //   );
-  // }
+
+  @override
+  _MainScreenState createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  final _origin =
+      Location(name: "origin", latitude: 13.639810, longitude: 100.509232);
+
+  final _destination = Location(
+      name: "LX exhibition", latitude: 13.652011, longitude: 100.494209);
+
+  MapboxNavigation _directions;
+
+  bool _arrived = false;
+
+  double _distanceRemaining, _durationRemaining;
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+  Future<void> initPlatformState() async {
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    _directions = MapboxNavigation(onRouteProgress: (arrived) async {
+      _distanceRemaining = await _directions.distanceRemaining;
+      _durationRemaining = await _directions.durationRemaining;
+
+      setState(() {
+        _arrived = arrived;
+      });
+      if (arrived) {
+        await Future.delayed(Duration(seconds: 3));
+        await _directions.finishNavigation();
+      }
+    });
+  }
+
   void goAnnoucementList(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(AnnoucementList.routeName);
   }
@@ -76,7 +82,7 @@ class MainScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(left: 20, top: 5),
                     child: Text(
-                      'Where is LX Exhibiton ?',
+                      'Where is LX Exhibition ?',
                       style: TextStyle(
                         fontSize: 17,
                       ),
@@ -89,7 +95,7 @@ class MainScreen extends StatelessWidget {
                           left: 20,
                         ),
                         child: Text(
-                          'If you dont know.',
+                          'If you don\'t know.',
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.black.withOpacity(0.5),
@@ -111,10 +117,14 @@ class MainScreen extends StatelessWidget {
               Column(
                 children: <Widget>[
                   FlatButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(
-                        MapsFullScreen.routeName,
-                      );
+                    onPressed: () async {
+                      await _directions.startNavigation(
+                          origin: _origin,
+                          destination: _destination,
+                          mode: NavigationMode.walking,
+                          simulateRoute: false,
+                          language: "English",
+                          units: VoiceUnits.metric);
                     },
                     child: Container(
                       height: 50,
@@ -125,13 +135,15 @@ class MainScreen extends StatelessWidget {
                         color: Colors.orange[300],
                       ),
                       width: MediaQuery.of(context).size.width * 0.25,
+                      padding: EdgeInsets.all(
+                        2,
+                      ),
                       margin: EdgeInsets.only(
-                        left: 5,
                         top: 5,
                       ),
                       child: Center(
                         child: Text(
-                          'Click here',
+                          'Click here!',
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w700,

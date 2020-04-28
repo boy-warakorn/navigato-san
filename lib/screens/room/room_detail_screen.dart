@@ -242,7 +242,7 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
           onPressed: () {
             widget.todoHandler(roomId);
           },
-          backgroundColor: Colors.deepOrange,
+          backgroundColor: Colors.deepOrange[400],
         ),
       ),
     );

@@ -93,18 +93,18 @@ class RoomsCategory extends StatelessWidget {
               children: <Widget>[
                 Container(
                   padding: const EdgeInsets.only(top: 10, bottom: 20),
-                  child: title.length < 10
+                  child: title.length < 15
                       ? Text(
                           'Name : ${title}',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
                         )
                       : Text(
-                          'Name : ${title.substring(0, 9)}...',
+                          'Name : ${title.substring(0, 14)}...',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
