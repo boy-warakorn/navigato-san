@@ -1,4 +1,4 @@
-# mobile_project
+# mobile-project
 
 LX Navigation mobile application
 
