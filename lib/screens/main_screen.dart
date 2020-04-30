@@ -7,6 +7,8 @@ import '../widgets/annoucements.dart';
 import '../data/dummy_data.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../models/annoucement.dart';
+import 'package:provider/provider.dart';
+import '../models/user_location.dart';
 
 class MainScreen extends StatefulWidget {
   static const routeName = '/main';
@@ -16,10 +18,10 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final _origin =
-      Location(name: "origin", latitude: 13.639810, longitude: 100.509232);
+  // var _origin =
+  //     Location(name: "origin", latitude: 13.639810, longitude: 100.509232);
 
-  final _destination = Location(
+  var _destination = Location(
       name: "LX exhibition", latitude: 13.652011, longitude: 100.494209);
 
   MapboxNavigation _directions;
@@ -59,6 +61,12 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var userLocation = Provider.of<UserLocation>(context);
+    var origin = Location(
+        name: "origin",
+        latitude: userLocation.lat == null ? 10 : userLocation.lat,
+        longitude: userLocation.long);
+
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -119,7 +127,7 @@ class _MainScreenState extends State<MainScreen> {
                   FlatButton(
                     onPressed: () async {
                       await _directions.startNavigation(
-                          origin: _origin,
+                          origin: origin,
                           destination: _destination,
                           mode: NavigationMode.walking,
                           simulateRoute: false,

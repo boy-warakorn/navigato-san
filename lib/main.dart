@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import './services/location_service.dart';
 import './screens/main_screen.dart';
 
 import 'dart:async';
@@ -13,6 +15,7 @@ import './screens/room/rooms_screen.dart';
 import './screens/room/room_detail_screen_withoutButton.dart';
 import './models/annoucement.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -49,25 +52,28 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        fontFamily: 'Kanit',
-        primaryColor: Colors.orangeAccent,
+    return StreamProvider(
+      create: (ctx) => LocationService().locationStream,
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          fontFamily: 'Kanit',
+          primaryColor: Colors.orangeAccent,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (ctx) => SplashScreen(_todoRoom),
+          '/main': (ctx) => TabsScreen(_todoRoom),
+          MapsFullScreen.routeName: (ctx) => MapsFullScreen(),
+          RoomScreen.routeName: (ctx) => RoomScreen(),
+          RoomDetailScreen.routeName: (ctx) =>
+              RoomDetailScreen(_toggleFavorite, _isRoomTodo),
+          RoomDetailScreen2.routeName: (ctx) =>
+              RoomDetailScreen2(_toggleFavorite, _isRoomTodo),
+          AnnoucementList.routeName: (ctx) => AnnoucementList(annouceData),
+          ContactScreen.routeName: (ctx) => ContactScreen(),
+        },
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (ctx) => SplashScreen(_todoRoom),
-        '/main': (ctx) => TabsScreen(_todoRoom),
-        MapsFullScreen.routeName: (ctx) => MapsFullScreen(),
-        RoomScreen.routeName: (ctx) => RoomScreen(),
-        RoomDetailScreen.routeName: (ctx) =>
-            RoomDetailScreen(_toggleFavorite, _isRoomTodo),
-        RoomDetailScreen2.routeName: (ctx) =>
-            RoomDetailScreen2(_toggleFavorite, _isRoomTodo),
-        AnnoucementList.routeName: (ctx) => AnnoucementList(annouceData),
-        ContactScreen.routeName: (ctx) => ContactScreen(),
-      },
     );
   }
 }
