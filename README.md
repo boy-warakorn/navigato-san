@@ -2,6 +2,3 @@
 
 LX Navigation mobile application
 
-## Authors
-
--   **Warakorn Chantranupong**
