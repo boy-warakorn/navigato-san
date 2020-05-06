@@ -43,7 +43,7 @@ class MainDrawer extends StatelessWidget {
             height: 20,
           ),
           buildListTile(
-            'Faq.',
+            'Help',
             Icons.question_answer,
             () {
               Navigator.of(context).pushNamed(FAQScreen.routeName);

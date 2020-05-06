@@ -31,8 +31,10 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Future<void> initPlatformState() async {
+    Future.delayed(
+      Duration(seconds: 2),
+    );
     if (!mounted) return;
-
     _directions = MapboxNavigation(onRouteProgress: (arrived) async {
       _distanceRemaining = await _directions.distanceRemaining;
       _durationRemaining = await _directions.durationRemaining;
@@ -96,10 +98,15 @@ class _MainScreenState extends State<MainScreen> {
                   child: Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        5,
+                      borderRadius: BorderRadius.circular(5),
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.orange,
+                          Colors.orange.withOpacity(0.7),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
                       ),
-                      color: Colors.orange[300],
                     ),
                     width: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.all(

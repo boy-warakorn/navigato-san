@@ -10,7 +10,7 @@ class FAQScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FAQ'),
+        title: Text('Help'),
       ),
       body: ListView(
         children: <Widget>[

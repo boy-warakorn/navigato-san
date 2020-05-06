@@ -98,7 +98,7 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
                         child: Text(
                           '${title}',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -152,7 +152,6 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            margin: const EdgeInsets.only(left: 5),
                             child: Text(
                               'Detail : ',
                               style: TextStyle(
@@ -161,9 +160,6 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(
-                              left: 5,
-                            ),
                             child: Text(
                               '${description}',
                               style: TextStyle(
@@ -188,9 +184,6 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
                             children: <Widget>[
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.85,
-                                margin: EdgeInsets.only(
-                                  left: 5,
-                                ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[

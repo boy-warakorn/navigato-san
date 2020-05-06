@@ -18,23 +18,24 @@ class _LayoutMapScreenState extends State<LayoutMapScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            child: Text(
-              'Layout Map',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
-          ),
+          // Container(
+          //   child: Text(
+          //     'Layout Map',
+          //     style: TextStyle(
+          //       fontSize: 22,
+          //       fontWeight: FontWeight.bold,
+          //       color: Colors.black,
+          //     ),
+          //   ),
+          // ),
           Container(
             margin: EdgeInsets.only(top: 10),
             child: Text(
-              '( You can zoom-in or out in this layout map )',
+              '( You can zoom-in or out on this layout map )',
               style: TextStyle(
                 fontSize: 13,
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
