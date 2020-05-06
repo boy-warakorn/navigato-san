@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import '../../models/room.dart';
 import '../../data/dummy_data.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RoomDetailScreen2 extends StatefulWidget {
   static const routeName = '/roomDetail2';
