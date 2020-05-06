@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_project/models/user_location.dart';
+
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
@@ -97,7 +97,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Future.delayed(Duration(milliseconds: 5000)).then((response) => {
+    Future.delayed(Duration(milliseconds: 3000)).then((response) => {
           Navigator.pushReplacement(
             context,
             PageTransition(
