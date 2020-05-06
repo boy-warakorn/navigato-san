@@ -58,116 +58,110 @@ class _MainScreenState extends State<MainScreen> {
     var userLocation = Provider.of<UserLocation>(context);
     var origin = Location(
         name: "origin",
-        latitude: userLocation.lat == null ? 10 : userLocation.lat,
+        latitude: userLocation.lat,
         longitude: userLocation.long);
 
-    if (userLocation.lat == null || userLocation.long == null) {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
-    } else {
-      return SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Center(
-              child: Container(
-                margin: const EdgeInsets.only(top: 30),
-                height: 210,
-                child: Image.asset(
-                  'assets/images/marker.png',
-                  fit: BoxFit.cover,
-                ),
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Center(
+            child: Container(
+              margin: const EdgeInsets.only(top: 30),
+              height: 210,
+              child: Image.asset(
+                'assets/images/marker.png',
+                fit: BoxFit.cover,
               ),
             ),
-            SizedBox(
-              height: 5,
-            ),
-            Column(
-              children: <Widget>[
-                FlatButton(
-                  onPressed: () async {
-                    await _directions.startNavigation(
-                        origin: origin,
-                        destination: _destination,
-                        mode: NavigationMode.drivingWithTraffic,
-                        simulateRoute: false,
-                        language: "English",
-                        units: VoiceUnits.metric);
-                  },
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.orange,
-                          Colors.orange.withOpacity(0.7),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Column(
+            children: <Widget>[
+              FlatButton(
+                onPressed: () async {
+                  await _directions.startNavigation(
+                      origin: origin,
+                      destination: _destination,
+                      mode: NavigationMode.drivingWithTraffic,
+                      simulateRoute: false,
+                      language: "English",
+                      units: VoiceUnits.metric);
+                },
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.orange,
+                        Colors.orange.withOpacity(0.7),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
-                    width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(
-                      2,
-                    ),
-                    margin: EdgeInsets.only(
-                      top: 5,
-                    ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            'Navigate to LX Building',
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black.withOpacity(1),
-                            ),
+                  ),
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(
+                    2,
+                  ),
+                  margin: EdgeInsets.only(
+                    top: 5,
+                  ),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Navigate to LX Building',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black.withOpacity(1),
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          FaIcon(FontAwesomeIcons.directions),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        FaIcon(FontAwesomeIcons.directions),
+                      ],
                     ),
                   ),
                 ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.95,
+            height: MediaQuery.of(context).size.height * 0.34,
+            child: Carousel(
+              dotSize: 4.0,
+              dotSpacing: 10,
+              dotColor: Colors.orange,
+              dotIncreasedColor: Colors.orange,
+              borderRadius: true,
+              indicatorBgPadding: 5.0,
+              autoplayDuration: Duration(
+                seconds: 3,
+              ),
+              images: [
+                AssetImage('assets/images/oro.jpg'),
+                AssetImage('assets/images/dummy1.jpg'),
+                AssetImage('assets/images/dummy2.jpg'),
+                AssetImage('assets/images/dummy3.jpg'),
               ],
             ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.95,
-              height: MediaQuery.of(context).size.height * 0.34,
-              child: Carousel(
-                dotSize: 4.0,
-                dotSpacing: 10,
-                dotColor: Colors.orange,
-                dotIncreasedColor: Colors.orange,
-                borderRadius: true,
-                indicatorBgPadding: 5.0,
-                autoplayDuration: Duration(
-                  seconds: 3,
-                ),
-                images: [
-                  AssetImage('assets/images/oro.jpg'),
-                  AssetImage('assets/images/dummy1.jpg'),
-                  AssetImage('assets/images/dummy2.jpg'),
-                  AssetImage('assets/images/dummy3.jpg'),
-                ],
-              ),
-            )
-          ],
-        ),
-      );
-    }
+          )
+        ],
+      ),
+    );
   }
 }

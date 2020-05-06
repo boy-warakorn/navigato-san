@@ -14,8 +14,8 @@ class LocationService {
         location.onLocationChanged.listen((locationData) {
           if (locationData != null) {
             _locationController.add(UserLocation(
-              locationData.latitude,
-              locationData.longitude,
+              lat: locationData.latitude,
+              long: locationData.longitude,
             ));
           }
         });
@@ -28,8 +28,8 @@ class LocationService {
   Future<UserLocation> getLocation() async {
     try {
       var userLocation = await location.getLocation();
-      _currentLocation =
-          UserLocation(userLocation.latitude, userLocation.longitude);
+      _currentLocation = UserLocation(
+          lat: userLocation.latitude, long: userLocation.longitude);
     } catch (e) {
       print('Could not get the location: $e');
     }
