@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/main_drawer.dart';
-import '../models/room.dart';
+
 import './layout_map/layout_map_screen.dart';
 import './contact_screen.dart';
 import './todo_screen.dart';
 import './main_screen.dart';
 import './room/rooms_screen.dart';
+import '../screens/room/room_detail_screen.dart';
+
+import '../models/room.dart';
 
 class TabsScreen extends StatefulWidget {
   List<Room> todoRoom = [];
@@ -18,7 +20,7 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  Widget _buildButton(String text) {
+  Widget _buildButton(String text, String id) {
     return Container(
       margin: EdgeInsets.symmetric(
         vertical: 10,
@@ -39,7 +41,14 @@ class _TabsScreenState extends State<TabsScreen> {
         ),
       ),
       child: FlatButton(
-        onPressed: () {},
+        onPressed: id.contains('0')
+            ? null
+            : () {
+                Navigator.of(context).pushNamed(
+                  RoomDetailScreen.routeName,
+                  arguments: id,
+                );
+              },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -78,7 +87,7 @@ class _TabsScreenState extends State<TabsScreen> {
             onTap: () {},
             behavior: HitTestBehavior.opaque,
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.5,
               child: Column(
                 children: <Widget>[
                   Container(
@@ -95,38 +104,38 @@ class _TabsScreenState extends State<TabsScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      _buildButton('Exhibition Zone'),
-                      _buildButton('Escape Room'),
+                      _buildButton('Exhibition Zone', '1'),
+                      _buildButton('Escape Room', '2'),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      _buildButton('ORO'),
-                      _buildButton('Pop up Exhibition'),
+                      _buildButton('ORO', '3'),
+                      _buildButton('Pop up Exhibition', '8'),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      _buildButton('LX Building studies'),
-                      _buildButton('MC. show room'),
+                      _buildButton('LX Building studies', '5'),
+                      _buildButton('MC. show room', '6'),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      _buildButton('Entrepeneur innovation'),
-                      _buildButton('Research show'),
+                      _buildButton('Entrepeneur innovation', '7'),
+                      _buildButton('Research show', '4'),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      _buildButton('Vending Machine'),
-                      _buildButton('Toilet'),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //   children: <Widget>[
+                  //     _buildButton('Vending Machine', '0'),
+                  //     _buildButton('Toilet', '0'),
+                  //   ],
+                  // ),
                 ],
               ),
             ),

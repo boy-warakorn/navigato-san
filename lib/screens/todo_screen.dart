@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import '../models/room.dart';
 import '../widgets/todos_item.dart';
 import '../data/dummy_data.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TodoScreen extends StatefulWidget {
   final List<Room> todoRoom;

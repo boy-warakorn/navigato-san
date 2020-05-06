@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../widgets/faq_item.dart';
-import '../screens/contact_screen.dart';
+
 
 class FAQScreen extends StatelessWidget {
   static const routeName = '/FAQscreen';
