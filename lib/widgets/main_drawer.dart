@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/contact_screen.dart';
+import '../screens/faq_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tabHandler) {
@@ -29,7 +29,7 @@ class MainDrawer extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(20),
             alignment: Alignment.centerLeft,
-            color: Colors.orange,
+            color: Colors.orange[300],
             child: Text(
               'Navigato-san',
               style: TextStyle(
@@ -43,10 +43,10 @@ class MainDrawer extends StatelessWidget {
             height: 20,
           ),
           buildListTile(
-            'Contact us',
-            Icons.phone,
+            'Faq.',
+            Icons.question_answer,
             () {
-              Navigator.of(context).pushNamed(ContactScreen.routeName);
+              Navigator.of(context).pushNamed(FAQScreen.routeName);
             },
           ),
           // buildListTile(

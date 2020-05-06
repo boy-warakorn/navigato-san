@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import './screens/main_screen.dart';
-
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'dart:async';
+
+import './services/location_service.dart';
+
 import './screens/contact_screen.dart';
-import './data/dummy_data.dart';
 import './screens/annoucement/annoucement_list_screen.dart';
-import './models/room.dart';
+import './screens/faq_screen.dart';
 import './screens/room/room_detail_screen.dart';
-import './screens/map/map_full_screen.dart';
 import './screens/tabs_screen.dart';
 import './screens/room/rooms_screen.dart';
 import './screens/room/room_detail_screen_withoutButton.dart';
+
 import './models/annoucement.dart';
-import 'package:page_transition/page_transition.dart';
+import './models/room.dart';
+
+import './data/dummy_data.dart';
 
 void main() {
   runApp(MyApp());
@@ -49,25 +53,29 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        fontFamily: 'Kanit',
-        primaryColor: Colors.orangeAccent,
+    return StreamProvider(
+      create: (ctx) => LocationService().locationStream,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          fontFamily: 'Kanit',
+          primaryColor: Colors.orangeAccent,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (ctx) => SplashScreen(_todoRoom),
+          '/main': (ctx) => TabsScreen(_todoRoom),
+          RoomScreen.routeName: (ctx) => RoomScreen(),
+          RoomDetailScreen.routeName: (ctx) =>
+              RoomDetailScreen(_toggleFavorite, _isRoomTodo),
+          RoomDetailScreen2.routeName: (ctx) =>
+              RoomDetailScreen2(_toggleFavorite, _isRoomTodo),
+          AnnoucementList.routeName: (ctx) => AnnoucementList(annouceData),
+          ContactScreen.routeName: (ctx) => ContactScreen(),
+          FAQScreen.routeName: (ctx) => FAQScreen(),
+        },
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (ctx) => SplashScreen(_todoRoom),
-        '/main': (ctx) => TabsScreen(_todoRoom),
-        MapsFullScreen.routeName: (ctx) => MapsFullScreen(),
-        RoomScreen.routeName: (ctx) => RoomScreen(),
-        RoomDetailScreen.routeName: (ctx) =>
-            RoomDetailScreen(_toggleFavorite, _isRoomTodo),
-        RoomDetailScreen2.routeName: (ctx) =>
-            RoomDetailScreen2(_toggleFavorite, _isRoomTodo),
-        AnnoucementList.routeName: (ctx) => AnnoucementList(annouceData),
-        ContactScreen.routeName: (ctx) => ContactScreen(),
-      },
     );
   }
 }
@@ -90,15 +98,15 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-        context,
-        PageTransition(
-          child: TabsScreen(widget.todoRoom),
-          type: null,
-        ),
-      );
-    });
+    Future.delayed(Duration(milliseconds: 3800), () {}).then((response) => {
+          Navigator.pushReplacement(
+            context,
+            PageTransition(
+              child: TabsScreen(widget.todoRoom),
+              type: null,
+            ),
+          )
+        });
   }
 
   @override
@@ -108,6 +116,7 @@ class _SplashScreenState extends State<SplashScreen> {
         opacity = 1;
       });
     });
+
     return Scaffold(
       body: Stack(
         children: <Widget>[

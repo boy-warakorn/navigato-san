@@ -68,7 +68,7 @@ class RoomsCategory extends StatelessWidget {
       child: Card(
         color: Colors.orange[300],
         margin: EdgeInsets.all(
-          15,
+          25,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
