@@ -69,8 +69,8 @@ class ContactScreen extends StatelessWidget {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(100),
-              bottomRight: Radius.circular(100),
+              bottomLeft: Radius.circular(70),
+              bottomRight: Radius.circular(70),
             ),
             child: Container(
               height: MediaQuery.of(context).size.height * 0.35,
@@ -136,14 +136,6 @@ class ContactScreen extends StatelessWidget {
           SizedBox(
             height: 15,
           ),
-          // buildContactBlock(': 02-470-8000', FaIcon(FontAwesomeIcons.phone)),
-          // SizedBox(
-          //   height: 17,
-          // ),
-          // Container(
-          //   height: 220,
-          //   child: Image.asset('assets/images/test.png'),
-          // )
         ],
       ),
     );

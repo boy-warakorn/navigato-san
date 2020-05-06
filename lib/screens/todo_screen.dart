@@ -43,10 +43,10 @@ class _TodoScreenState extends State<TodoScreen> {
         children: <Widget>[
           Center(
             child: Container(
-              margin: EdgeInsets.only(),
+              margin: EdgeInsets.only(left:60),
               height: 200,
               child: Image.asset(
-                'assets/images/test.png',
+                'assets/images/no_dummy.png',
                 fit: BoxFit.cover,
               ),
             ),

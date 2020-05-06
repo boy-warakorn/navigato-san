@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mobile_project/screens/contact_screen.dart';
 
-import '../data/dummy_data.dart';
 import '../widgets/main_drawer.dart';
 import '../models/room.dart';
 import './layout_map/layout_map_screen.dart';
-import './map/map_screen.dart';
+import './contact_screen.dart';
 import './todo_screen.dart';
 import './main_screen.dart';
 import './room/rooms_screen.dart';
@@ -183,6 +181,7 @@ class _TabsScreenState extends State<TabsScreen> {
             ),
           ),
         ),
+        drawer: MainDrawer(),
         body: _pages[_selectedIndex]['page'],
         bottomNavigationBar: BottomNavigationBar(
           onTap: _selectPage,
@@ -226,17 +225,6 @@ class _TabsScreenState extends State<TabsScreen> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
-            // BottomNavigationBarItem(
-            //   backgroundColor: Colors.orange,
-            //   icon: FaIcon(
-            //     FontAwesomeIcons.mapMarkedAlt,
-            //     size: 20,
-            //   ),
-            //   title: Text(
-            //     'Where LX',
-            //     style: TextStyle(fontWeight: FontWeight.bold),
-            //   ),
-            // ),
             BottomNavigationBarItem(
               backgroundColor: Colors.orange,
               icon: FaIcon(
@@ -261,7 +249,7 @@ class _TabsScreenState extends State<TabsScreen> {
             ),
           ],
         ),
-        floatingActionButton: _selectedIndex == 5
+        floatingActionButton: _selectedIndex == 3
             ? FloatingActionButton(
                 backgroundColor: Colors.orange,
                 onPressed: () => _showModalSheet(),
@@ -288,7 +276,7 @@ class _TabsScreenState extends State<TabsScreen> {
         body: _pages[_selectedIndex]['page'],
         bottomNavigationBar: BottomNavigationBar(
           onTap: _selectPage,
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.orange[200],
           unselectedItemColor: Colors.white,
           selectedItemColor: Colors.black,
           elevation: 3,

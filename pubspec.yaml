@@ -58,6 +58,8 @@ flutter:
     - assets/images/KMUTT.png
     - assets/images/line.png
     - assets/images/dummy1.jpg
+    - assets/images/no_dummy.jpg
+    - assets/images/no_dummy.png
     - assets/images/dummy2.jpg
     - assets/images/dummy3.jpg
     - assets/images/kmuttTem.jpg
