@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../../widgets/rooms_category.dart';
 
 import '../../data/dummy_data.dart';
@@ -16,6 +15,7 @@ class RoomScreen extends StatefulWidget {
 
 class _RoomScreenState extends State<RoomScreen> {
   final List<Room> roomList = DUMMY_ROOM;
+  List<Room> checkList = [];
   List<Room> roomSearch;
 
   final _inputController = TextEditingController();
@@ -39,6 +39,7 @@ class _RoomScreenState extends State<RoomScreen> {
                 ),
           )
           .toList();
+      print(roomSearch);
     });
   }
 
@@ -125,20 +126,38 @@ class _RoomScreenState extends State<RoomScreen> {
                     ],
                   ),
                 )
-              : Container(
-                  height: MediaQuery.of(context).size.height * 0.6,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Not Found',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
+              : roomSearch == checkList
+                  ? Container(
+                      child: Text('asdasdads'),
+                    )
+                  : Container(
+                      decoration: BoxDecoration(
+                          color: Colors.orangeAccent[100],
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(50),
+                            topRight: Radius.circular(50),
+                          )),
+                      height: MediaQuery.of(context).size.height * 0.6,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.57,
+                            child: ListView.builder(
+                              itemBuilder: (ctx, index) => RoomsCategory(
+                                roomSearch[index].title,
+                                roomSearch[index].id,
+                                roomSearch[index].description,
+                                roomSearch[index].category,
+                                roomSearch[index].imgPath,
+                                roomSearch[index].location,
+                              ),
+                              itemCount: roomSearch.length,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
+                    ),
         ],
       ),
     );

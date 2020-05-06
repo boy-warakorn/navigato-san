@@ -61,25 +61,7 @@ class _RoomDetailScreen2State extends State<RoomDetailScreen2> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                // Positioned(
-                //   right: 8,
-                //   top: 10,
-                //   child: Container(
-                //     margin: EdgeInsets.all(2),
-                //     padding: EdgeInsets.only(right: 5),
-                //     decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(15),
-                //     ),
-                //     child: Row(
-                //       children: <Widget>[
-                //         Icon(
-                //           icondata,
-                //           size: 50,
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
+              
               ],
             ),
             SizedBox(
