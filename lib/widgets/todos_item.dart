@@ -45,11 +45,14 @@ class _TodoListState extends State<TodoList> {
                 topLeft: Radius.circular(15),
                 topRight: Radius.circular(15),
               ),
-              child: Image.asset(
-                widget.imgPath,
-                height: 100,
-                width: double.infinity,
-                fit: BoxFit.cover,
+              child: Hero(
+                tag: widget.id + '1',
+                child: Image.asset(
+                  widget.imgPath,
+                  height: 100,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             const SizedBox(height: 5),

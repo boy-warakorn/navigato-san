@@ -12,7 +12,7 @@ class MapGenerate extends StatefulWidget {
 class _MapGenerateState extends State<MapGenerate> {
   var _destination = Location(
       name: "LX exhibition", latitude: 13.652011, longitude: 100.494209);
-
+  var _isLoading = false;
   MapboxNavigation _directions;
 
   bool _arrived = false;
@@ -59,15 +59,17 @@ class _MapGenerateState extends State<MapGenerate> {
           );
 
     return FlatButton(
-      onPressed: () async {
-        await _directions.startNavigation(
-            origin: origin,
-            destination: _destination,
-            mode: NavigationMode.drivingWithTraffic,
-            simulateRoute: false,
-            language: "English",
-            units: VoiceUnits.metric);
-      },
+      onPressed: _isLoading
+          ? null
+          : () async {
+              await _directions.startNavigation(
+                  origin: origin,
+                  destination: _destination,
+                  mode: NavigationMode.drivingWithTraffic,
+                  simulateRoute: false,
+                  language: "English",
+                  units: VoiceUnits.metric);
+            },
       child: Container(
         height: 50,
         decoration: BoxDecoration(

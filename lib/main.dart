@@ -14,6 +14,8 @@ import './screens/tabs_screen.dart';
 import './screens/room/rooms_screen.dart';
 import './screens/room/room_detail_screen_withoutButton.dart';
 
+import './helpers/custom_route.dart';
+
 import './models/annoucement.dart';
 import './models/room.dart';
 
@@ -62,6 +64,12 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           fontFamily: 'Kanit',
           primaryColor: Colors.orangeAccent,
+          pageTransitionsTheme: PageTransitionsTheme(
+            builders: {
+              TargetPlatform.android: CustomPageTransitionBuilder(),
+              TargetPlatform.iOS: CustomPageTransitionBuilder(),
+            },
+          ),
         ),
         initialRoute: '/',
         routes: {
@@ -97,7 +105,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Future.delayed(Duration(milliseconds: 3000)).then((response) => {
+    Future.delayed(Duration(milliseconds: 2500)).then((response) => {
           Navigator.pushReplacement(
             context,
             PageTransition(

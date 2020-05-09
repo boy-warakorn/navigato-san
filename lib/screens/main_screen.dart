@@ -1,11 +1,8 @@
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:mobile_project/models/user_location.dart';
-import 'package:mobile_project/widgets/map_generate.dart';
-import '../models/user_location.dart';
 
+import '../widgets/map_generate.dart';
 import '../screens/annoucement/annoucement_list_screen.dart';
 
 class MainScreen extends StatefulWidget {

@@ -80,11 +80,14 @@ class RoomsCategory extends StatelessWidget {
                 topLeft: Radius.circular(15),
                 topRight: Radius.circular(15),
               ),
-              child: Image.asset(
-                imgPath,
-                height: 150,
-                width: double.infinity,
-                fit: BoxFit.cover,
+              child: Hero(
+                tag: id,
+                child: Image.asset(
+                  imgPath,
+                  height: 150,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             SizedBox(height: 10),
