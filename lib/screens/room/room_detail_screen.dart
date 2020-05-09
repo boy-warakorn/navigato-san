@@ -51,11 +51,14 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.only(),
-            child: Image.asset(
-              imgPath,
-              height: 250,
-              width: double.infinity,
-              fit: BoxFit.cover,
+            child: Hero(
+              tag: roomId,
+              child: Image.asset(
+                imgPath,
+                height: 250,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Container(
