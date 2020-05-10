@@ -8,6 +8,7 @@ class RoomDetailScreen extends StatefulWidget {
   static const routeName = '/roomDetail';
   final Function todoHandler;
   final Function isTodo;
+
   RoomDetailScreen(this.todoHandler, this.isTodo);
 
   @override
@@ -17,7 +18,9 @@ class RoomDetailScreen extends StatefulWidget {
 class _RoomDetailScreenState extends State<RoomDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final roomId = ModalRoute.of(context).settings.arguments as String;
+    final roomData = ModalRoute.of(context).settings.arguments as List;
+    final roomId = roomData[0];
+    final isFav = roomData[1];
     final selectedRoom =
         DUMMY_ROOM.firstWhere((element) => roomId == element.id);
     final title = selectedRoom.title;
@@ -48,6 +51,9 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
         backgroundColor: Colors.orange,
       ),
       body: Column(
+        mainAxisAlignment:
+            isFav ? MainAxisAlignment.spaceBetween : MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.only(),
@@ -55,13 +61,16 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
               tag: roomId,
               child: Image.asset(
                 imgPath,
-                height: 250,
+                height: 300,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
             ),
           ),
           Container(
+            margin: EdgeInsets.only(
+              top: isFav ? 0 : 10,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30),
@@ -71,9 +80,6 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
             ),
             child: Column(
               children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
@@ -213,38 +219,41 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
               ],
             ),
           ),
+          if (isFav)
+            RaisedButton.icon(
+              padding: EdgeInsets.all(
+                10,
+              ),
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              elevation: 0,
+              onPressed: () {
+                widget.todoHandler(roomId);
+              },
+              icon: widget.isTodo(roomId)
+                  ? Icon(
+                      Icons.favorite,
+                      size: 35,
+                    )
+                  : Icon(
+                      Icons.favorite_border,
+                      size: 35,
+                    ),
+              label: widget.isTodo(roomId)
+                  ? Text(
+                      'Unadd to To-do List',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    )
+                  : Text(
+                      'Add to To-do List',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+              color: Colors.deepOrange[400],
+            ),
         ],
-      ),
-      floatingActionButton: Container(
-        width: MediaQuery.of(context).size.width * 0.94,
-        child: FloatingActionButton.extended(
-          icon: widget.isTodo(roomId)
-              ? Icon(
-                  Icons.favorite,
-                  size: 35,
-                )
-              : Icon(
-                  Icons.favorite_border,
-                  size: 35,
-                ),
-          label: widget.isTodo(roomId)
-              ? Text(
-                  'Unadd to To-do List',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                )
-              : Text(
-                  'Add to To-do List',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-          onPressed: () {
-            widget.todoHandler(roomId);
-          },
-          backgroundColor: Colors.deepOrange[400],
-        ),
       ),
     );
   }

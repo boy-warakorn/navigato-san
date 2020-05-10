@@ -12,7 +12,6 @@ import './screens/faq_screen.dart';
 import './screens/room/room_detail_screen.dart';
 import './screens/tabs_screen.dart';
 import './screens/room/rooms_screen.dart';
-import './screens/room/room_detail_screen_withoutButton.dart';
 
 import './helpers/custom_route.dart';
 
@@ -76,10 +75,10 @@ class _MyAppState extends State<MyApp> {
           '/': (ctx) => SplashScreen(_todoRoom),
           '/main': (ctx) => TabsScreen(_todoRoom),
           RoomScreen.routeName: (ctx) => RoomScreen(),
-          RoomDetailScreen.routeName: (ctx) =>
-              RoomDetailScreen(_toggleFavorite, _isRoomTodo),
-          RoomDetailScreen2.routeName: (ctx) =>
-              RoomDetailScreen2(_toggleFavorite, _isRoomTodo),
+          RoomDetailScreen.routeName: (ctx) => RoomDetailScreen(
+                _toggleFavorite,
+                _isRoomTodo,
+              ),
           AnnoucementList.routeName: (ctx) => AnnoucementList(annouceData),
           ContactScreen.routeName: (ctx) => ContactScreen(),
           FAQScreen.routeName: (ctx) => FAQScreen(),

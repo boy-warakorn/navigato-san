@@ -17,7 +17,10 @@ class RoomsCategory extends StatelessWidget {
   void goRoomDetail(BuildContext context) {
     Navigator.of(context).pushNamed(
       RoomDetailScreen.routeName,
-      arguments: id,
+      arguments: [
+        id,
+        true,
+      ],
     );
   }
 
