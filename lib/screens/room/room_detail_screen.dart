@@ -184,7 +184,7 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> {
                 Row(
                   children: <Widget>[
                     Container(
-                      height: 100,
+                      height: 70,
                       margin: const EdgeInsets.only(left: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
