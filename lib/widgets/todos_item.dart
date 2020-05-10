@@ -22,7 +22,10 @@ class _TodoListState extends State<TodoList> {
     setState(() {
       Navigator.of(context).pushNamed(
         RoomDetailScreen.routeName,
-        arguments: [widget.id, true],
+        arguments: [
+          widget.id,
+          false,
+        ],
       );
     });
   }

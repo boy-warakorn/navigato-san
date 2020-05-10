@@ -46,7 +46,7 @@ class _TabsScreenState extends State<TabsScreen> {
             RoomDetailScreen.routeName,
             arguments: [
               id,
-              false,
+              true,
             ],
           );
         },
