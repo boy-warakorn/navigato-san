@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/room/room_detail_screen_withoutButton.dart';
+import '../screens/room/room_detail_screen.dart';
 
 class TodoList extends StatefulWidget {
   final String id;
@@ -21,8 +21,8 @@ class _TodoListState extends State<TodoList> {
   void goRoomDetail(BuildContext context) {
     setState(() {
       Navigator.of(context).pushNamed(
-        RoomDetailScreen2.routeName,
-        arguments: widget.id,
+        RoomDetailScreen.routeName,
+        arguments: [widget.id, true],
       );
     });
   }

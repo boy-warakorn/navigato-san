@@ -41,14 +41,15 @@ class _TabsScreenState extends State<TabsScreen> {
         ),
       ),
       child: FlatButton(
-        onPressed: id.contains('0')
-            ? null
-            : () {
-                Navigator.of(context).pushNamed(
-                  RoomDetailScreen.routeName,
-                  arguments: id,
-                );
-              },
+        onPressed: () {
+          Navigator.of(context).pushNamed(
+            RoomDetailScreen.routeName,
+            arguments: [
+              id,
+              false,
+            ],
+          );
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

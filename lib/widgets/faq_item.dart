@@ -47,35 +47,37 @@ class _FAQItemState extends State<FAQItem> {
               height: _expanded ? min(widget.subtitle.length * 39.0, 200) : 0,
               duration: Duration(milliseconds: 300),
               child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 15,
-                    vertical: 4,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 4,
+                ),
+                height: min(widget.subtitle.length * 39.0, 200),
+                child: ListView.builder(
+                  itemCount: widget.subtitle.length,
+                  itemBuilder: (ctx, index) => Container(
+                    margin: EdgeInsets.only(
+                      bottom: 5,
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              widget.subtitle[index],
+                              style: TextStyle(
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
                   ),
-                  height: min(widget.subtitle.length * 39.0, 200),
-                  child: ListView.builder(
-                      itemCount: widget.subtitle.length,
-                      itemBuilder: (ctx, index) => Container(
-                            margin: EdgeInsets.only(
-                              bottom: 5,
-                            ),
-                            child: Column(
-                              children: <Widget>[
-                                Row(
-                                  children: <Widget>[
-                                    Text(
-                                      widget.subtitle[index],
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                              ],
-                            ),
-                          ))),
+                ),
+              ),
             )
           ],
         ),
